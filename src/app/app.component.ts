@@ -8,11 +8,13 @@ import {Title} from '@angular/platform-browser';
 })
 export class AppComponent implements OnInit {
 
+    static readonly title: string = 'Q&A - An Angular App';
+
     public constructor(private titleService: Title) {
     }
 
     ngOnInit() {
-        this.titleService.setTitle('Q&A - An Angular App');
+        this.titleService.setTitle(AppComponent.title);
     }
 
 }

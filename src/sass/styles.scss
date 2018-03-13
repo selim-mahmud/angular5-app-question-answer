@@ -5,6 +5,14 @@
 
 //custom scss
 
-h1{
-  color:red;
+.footer{
+  padding: 15px 0;
+  p{
+    font-size: $font-size-very-small;
+  }
+}
+
+.veryDarkBG{
+  background-color: $gray-darker;
+  color: #fff;
 }
