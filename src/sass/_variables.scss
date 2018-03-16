@@ -16,12 +16,13 @@ $bootstrap-sass-asset-helper: false !default;
 
 $white-base:             #fff; // custom
 $white-dark:             darken($white-base, 15%) !default;
-$white-darker:             darken($white-base, 30%) !default;
+$white-darker:           darken($white-base, 30%) !default;
 $gray-base:              #000 !default;
 $gray-darker:            lighten($gray-base, 13.5%) !default; // #222
 $gray-dark:              lighten($gray-base, 20%) !default;   // #333
 $gray:                   lighten($gray-base, 33.5%) !default; // #555
 $gray-light:             lighten($gray-base, 66.5%); // was 46.7% #777
+$gray-more-light:        lighten($gray-base, 85.5%) !default; // #eee
 $gray-lighter:           lighten($gray-base, 93.5%) !default; // #eee
 
 $brand-primary:          #2eaae1; //edited - blue was #00aeef #00cee6
@@ -37,7 +38,7 @@ $brand-icon-lowlight:    #2e3f4a;
 $brand-primary-adj:      adjust-hue($brand-primary, 18%); //custom - blue
 $brand-success-adj:      darken($brand-success, 18%); //custom - green
 $brand-info-adj:         adjust-hue($brand-info, 18%); //custom - orange
-$brand-primary-dark:	#30588e;
+$brand-primary-dark:	 #30588e;
 
 
 // home calculator gradient also used other places
@@ -75,7 +76,7 @@ $font-family-base:        $font-family-sans-serif !default;
 $font-size-base:          18px; //edited
 $font-size-large:         ceil(($font-size-base * 1.25)) !default; // ~22.5px
 $font-size-small:         ceil(($font-size-base * 0.85)) !default; // ~15.3px
-$font-size-very-small:    ceil(($font-size-base * 0.70)) !default; // ~15.3px
+$font-size-very-small:    ceil(($font-size-base * 0.70)) !default;
 
 $font-size-h1:            floor(($font-size-base * 2.5)); // ~45px
 $font-size-h2:            floor(($font-size-base * 2.15)) !default; // ~38.7px

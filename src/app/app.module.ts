@@ -11,6 +11,8 @@ import { QuestionsComponent } from './components/body/questions/questions.compon
 import {AppRoutingModule} from "./app-routing.module";
 import { TagsComponent } from './components/body/tags/tags.component';
 import { UsersComponent } from './components/body/users/users.component';
+import { RegisterComponent } from './components/body/register/register.component';
+import { LoginComponent } from './components/body/login/login.component';
 
 
 @NgModule({
@@ -22,7 +24,9 @@ import { UsersComponent } from './components/body/users/users.component';
     HomePageComponent,
     QuestionsComponent,
     TagsComponent,
-    UsersComponent
+    UsersComponent,
+    RegisterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

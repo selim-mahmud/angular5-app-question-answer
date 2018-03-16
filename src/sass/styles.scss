@@ -18,3 +18,43 @@
   background-color: $gray-darker;
   color: $white-darker;
 }
+
+.singleQuestion{
+
+  border-bottom: 1px solid $gray-more-light;
+  padding-bottom: 15px;
+  margin-bottom: 25px;
+
+  .media-left{
+
+    h4{
+      margin: 0;
+      text-align: center;
+    }
+
+    p{
+      margin: 0;
+      text-align: center;
+      font-size: $font-size-very-small;
+    }
+
+    .date{
+      text-align: left;
+      color: $brand-warning;
+    }
+
+    .answer{
+      background-color: $brand-success;
+      padding: 10px 15px;
+      color: $white-base;
+      margin: 5px 15px 5px 0;
+      font-weight: bold;
+    }
+  }
+
+  .media-body{
+    .label{
+      font-size: $font-size-very-small;
+    }
+  }
+}
