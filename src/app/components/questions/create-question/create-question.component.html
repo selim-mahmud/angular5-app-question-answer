@@ -1,0 +1,38 @@
+<div style="max-width: 600px; margin: 0 auto;">
+    <form class="form-horizontal" [formGroup]="questionForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="title" class="col-sm-3 control-label">Title:</label>
+            <div class="col-sm-9">
+                <input
+                    type="text"
+                    class="form-control"
+                    name="title"
+                    id="title"
+                    placeholder="Title"
+                    formControlName="title">
+                <p *ngIf="!questionForm.get('title').valid && questionForm.get('title').touched"
+                class="errorMessage">Please enter a valid title.</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="description" class="col-sm-3 control-label">Description: </label>
+            <div class="col-sm-9">
+                <textarea
+                    name="description"
+                    id="description"
+                    class="form-control"
+                    rows="6"
+                    placeholder="Describe"
+                    formControlName="description">></textarea>
+                <p *ngIf="!questionForm.get('description').valid && questionForm.get('description').touched"
+                      class="errorMessage">Please enter a valid description.</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-9">
+                <button type="submit" [disabled]="!questionForm.valid"  class="btn btn-primary">Create</button>
+            </div>
+        </div>
+    </form>
+</div>
+

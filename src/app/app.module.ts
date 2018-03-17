@@ -1,38 +1,41 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
 
-import { AppComponent } from './app.component';
-import { HeaderComponent } from './components/header/header.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { BodyComponent } from './components/body/body.component';
-import { HomePageComponent } from './components/body/home-page/home-page.component';
-import { QuestionsComponent } from './components/body/questions/questions.component';
+import {AppComponent} from './app.component';
+import {HeaderComponent} from './components/header/header.component';
+import {FooterComponent} from './components/footer/footer.component';
+import {HomePageComponent} from './components/home-page/home-page.component';
+import {QuestionsComponent} from './components/questions/questions.component';
 import {AppRoutingModule} from "./app-routing.module";
-import { TagsComponent } from './components/body/tags/tags.component';
-import { UsersComponent } from './components/body/users/users.component';
-import { RegisterComponent } from './components/body/register/register.component';
-import { LoginComponent } from './components/body/login/login.component';
+import {TagsComponent} from './components/tags/tags.component';
+import {UsersComponent} from './components/users/users.component';
+import {RegisterComponent} from './components/register/register.component';
+import {LoginComponent} from './components/login/login.component';
+import {CreateQuestionComponent} from './components/questions/create-question/create-question.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    FooterComponent,
-    BodyComponent,
-    HomePageComponent,
-    QuestionsComponent,
-    TagsComponent,
-    UsersComponent,
-    RegisterComponent,
-    LoginComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        HeaderComponent,
+        FooterComponent,
+        HomePageComponent,
+        QuestionsComponent,
+        TagsComponent,
+        UsersComponent,
+        RegisterComponent,
+        LoginComponent,
+        CreateQuestionComponent,
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        ReactiveFormsModule
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

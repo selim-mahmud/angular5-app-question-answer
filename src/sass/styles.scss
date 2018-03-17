@@ -19,6 +19,19 @@
   color: $white-darker;
 }
 
+//style for angular element
+input.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched,
+select.ng-invalid.ng-touched{
+  border: 1px solid $brand-danger;
+}
+
+.errorMessage{
+  font-size: $font-size-very-small;
+  color: $brand-danger;
+}
+
+//style for question
 .singleQuestion{
 
   border-bottom: 1px solid $gray-more-light;
