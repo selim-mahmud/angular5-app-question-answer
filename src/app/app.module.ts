@@ -14,6 +14,9 @@ import {RegisterComponent} from './components/register/register.component';
 import {LoginComponent} from './components/login/login.component';
 import {CreateQuestionComponent} from './components/questions/create-question/create-question.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import {MaterialModule} from "./material.module";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {FlexLayoutModule} from "@angular/flex-layout";
 
 
 @NgModule({
@@ -32,7 +35,10 @@ import {ReactiveFormsModule} from "@angular/forms";
     imports: [
         BrowserModule,
         AppRoutingModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        BrowserAnimationsModule,
+        MaterialModule,
+        FlexLayoutModule,
     ],
     providers: [],
     bootstrap: [AppComponent]

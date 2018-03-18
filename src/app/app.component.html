@@ -1,23 +1,33 @@
-<div class="container">
-    <div class="row">
-
-        <div class="col-md-12">
-            <app-header></app-header>
-        </div>
-        <div class="col-md-12">
-            <div class="row">
-                <div class="col-sm-9">
-                    <router-outlet></router-outlet>
-                </div>
-                <div class="col-sm-3">
-                    <h3>This is side bar.</h3>
-                </div>
+<mat-sidenav-container>
+    <mat-sidenav #sidenav role="navigation">
+        <mat-nav-list>
+            <a (click)="sidenav.toggle()" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" mat-list-item routerLink="/">Home</a>
+            <a (click)="sidenav.toggle()" routerLinkActive="active" mat-list-item routerLink="/questions">Questions</a>
+            <a (click)="sidenav.toggle()" routerLinkActive="active" mat-list-item routerLink="/tags">Tags</a>
+            <a (click)="sidenav.toggle()" routerLinkActive="active" mat-list-item routerLink="/users">Users</a>
+            <a (click)="sidenav.toggle()" routerLinkActive="active" mat-list-item routerLink="/register">Register</a>
+            <a (click)="sidenav.toggle()" routerLinkActive="active" mat-list-item routerLink="/login">Login</a>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <mat-toolbar color="primary">
+            <div fxHide.gt-xs>
+                <button mat-icon-button (click)="sidenav.toggle()">
+                    <mat-icon>menu</mat-icon>
+                </button>
             </div>
-        </div>
-
-        <div class="col-md-12">
-            <app-footer></app-footer>
-        </div>
-
-    </div>
-</div>
+            <div class="logo"><a routerLink="/">Angular Q&A</a></div>
+            <div fxHide.xs fxFlex fxLayout fxLayoutAlign="flex-end">
+                <ul fxLayout class="navigation-items">
+                    <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><a routerLink="/">Home</a></li>
+                    <li routerLinkActive="active"><a routerLink="/questions">Questions</a></li>
+                    <li routerLinkActive="active"><a routerLink="/tags">Tags</a></li>
+                    <li routerLinkActive="active"><a routerLink="/users">Users</a></li>
+                    <li routerLinkActive="active"><a routerLink="/register">Register</a></li>
+                    <li routerLinkActive="active"><a routerLink="/login">Login</a></li>
+                </ul>
+            </div>
+        </mat-toolbar>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>
