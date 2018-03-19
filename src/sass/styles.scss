@@ -11,6 +11,19 @@ body{
   margin:0;
 }
 
+.content-area{
+  max-width:1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+//background
+.grey-background{
+  background-color: $gray-more-light;
+  border-radius: 3px;
+  padding:15px;
+}
+
 //custom scss
 .footer{
   margin-top: 30px;
