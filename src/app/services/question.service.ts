@@ -1,14 +1,12 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders, RequestOptions} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import {Question} from '../models/question';
-
-
 
 @Injectable()
 export class QuestionService {
     headers;
-    options;
+    opts;
     private uRL = 'http://angular-api.dev-selim.com.au/api/v1/questions';
 
     // automatic incrementing of ids
@@ -17,15 +15,18 @@ export class QuestionService {
     // Placeholder for questions
     questions: Question[] = [];
 
-    constructor(private http: HttpClient) {
-        this.headers = new Headers();
-        this.headers.append('content-type', 'application/json');
-        this.headers.append('Authentication', 'Basic nernser:password');
-        this.options = new RequestOptions({headers: headers});
-    }
+    constructor(private http: HttpClient) {}
 
     getAllQuestions() {
-        return this.http.get(this.uRL, this.options);
+        let httpOptions = {
+            headers: new HttpHeaders({
+                'Content-Type':  'application/json',
+                'Authorization': 'Basic ' + btoa('cristina02:password'),
+                'Access-Control-Allow-Origin': '*',
+            })
+        };
+
+        return this.http.get(this.uRL, httpOptions);
     }
 
     getQuestionById(id: string): Question {
@@ -41,7 +42,7 @@ export class QuestionService {
     }
 
     updateQuestionById(id: string, values: Object = {}): Question {
-        let question = this.getTodoById(id);
+        let question = this.getQuestionById(id);
         if (!question) {
             return null;
         }

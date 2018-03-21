@@ -10,7 +10,7 @@ import {Question} from '../../models/question';
 })
 
 export class QuestionsComponent implements OnInit {
-    question;
+    questions;
     tags = new FormControl();
     tagList = ['PHP', 'Laravel', 'Javascript', 'Angular', 'Html', 'CSS'];
 
@@ -24,7 +24,7 @@ export class QuestionsComponent implements OnInit {
     getQuestions() {
         this.questionService.getAllQuestions().subscribe(
             data => {
-                this.question = data;
+                this.questions = data
             },
             err => console.error(err),
             () => console.log('done loading foods')
