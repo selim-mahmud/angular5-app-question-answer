@@ -1,8 +1,15 @@
 import {Injectable} from '@angular/core';
-import {Question} from "../models/question";
+import {HttpClient, HttpHeaders, RequestOptions} from '@angular/common/http';
+import {Observable} from 'rxjs/Observable';
+import {Question} from '../models/question';
+
+
 
 @Injectable()
 export class QuestionService {
+    headers;
+    options;
+    private uRL = 'http://angular-api.dev-selim.com.au/api/v1/questions';
 
     // automatic incrementing of ids
     lastId: number = 0;
@@ -10,20 +17,24 @@ export class QuestionService {
     // Placeholder for questions
     questions: Question[] = [];
 
-    constructor() {
+    constructor(private http: HttpClient) {
+        this.headers = new Headers();
+        this.headers.append('content-type', 'application/json');
+        this.headers.append('Authentication', 'Basic nernser:password');
+        this.options = new RequestOptions({headers: headers});
     }
 
-    getAllTodos(): Question[] {
-        return this.questions;
+    getAllQuestions() {
+        return this.http.get(this.uRL, this.options);
     }
 
-    getTodoById(id: string): Question {
+    getQuestionById(id: string): Question {
         return this.questions
             .filter(question => question.id === id)
             .pop();
     }
 
-    addTodo(question: Question): QuestionService {
+    addQuestion(question: Question): QuestionService {
 
         this.questions.push(question);
         return this;
@@ -52,4 +63,7 @@ export class QuestionService {
         return this;
     }
 
+    private handleError(error: Response) {
+        return Observable.throw(error.statusText);
+    }
 }

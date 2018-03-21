@@ -7,16 +7,18 @@ import {HeaderComponent} from './components/header/header.component';
 import {FooterComponent} from './components/footer/footer.component';
 import {HomePageComponent} from './components/home-page/home-page.component';
 import {QuestionsComponent} from './components/questions/questions.component';
-import {AppRoutingModule} from "./app-routing.module";
+import {AppRoutingModule} from './app-routing.module';
 import {TagsComponent} from './components/tags/tags.component';
 import {UsersComponent} from './components/users/users.component';
 import {RegisterComponent} from './components/register/register.component';
 import {LoginComponent} from './components/login/login.component';
 import {CreateQuestionComponent} from './components/questions/create-question/create-question.component';
-import {ReactiveFormsModule} from "@angular/forms";
-import {MaterialModule} from "./material.module";
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {FlexLayoutModule} from "@angular/flex-layout";
+import {ReactiveFormsModule} from '@angular/forms';
+import {MaterialModule} from './material.module';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {FlexLayoutModule} from '@angular/flex-layout';
+import {HttpClientModule} from '@angular/common/http';
+import {QuestionService} from './services/question.service';
 
 @NgModule({
     declarations: [
@@ -38,8 +40,9 @@ import {FlexLayoutModule} from "@angular/flex-layout";
         BrowserAnimationsModule,
         MaterialModule,
         FlexLayoutModule,
+        HttpClientModule,
     ],
-    providers: [],
+    providers: [QuestionService],
     bootstrap: [AppComponent]
 })
 export class AppModule {
