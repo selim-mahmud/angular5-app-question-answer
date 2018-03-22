@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
-import {QuestionService} from '../../services/question.service';
+import {QuestionService} from '../../services/question/question-data.service';
 import {Question} from '../../models/question';
 
 @Component({

@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
-import {Question} from '../models/question';
+import {Question} from '../../models/question';
 
 @Injectable()
-export class QuestionService {
+export class QuestionDataService {
     headers;
     opts;
     private uRL = 'http://angular-api.dev-selim.com.au/api/v1/questions';

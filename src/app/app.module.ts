@@ -1,7 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 
-
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './components/header/header.component';
 import {FooterComponent} from './components/footer/footer.component';
@@ -18,7 +17,10 @@ import {MaterialModule} from './material.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {HttpClientModule} from '@angular/common/http';
-import {QuestionService} from './services/question.service';
+import {QuestionDataService} from './services/question/question-data.service';
+import { HttpHeaderService } from './services/http-header.service';
+import { QuestionApiService } from './services/question/question-api.service';
+import { ApiUrlService } from './services/api-url.service';
 
 @NgModule({
     declarations: [
@@ -42,7 +44,12 @@ import {QuestionService} from './services/question.service';
         FlexLayoutModule,
         HttpClientModule,
     ],
-    providers: [QuestionService],
+    providers: [
+        QuestionDataService,
+        HttpHeaderService,
+        QuestionApiService,
+        ApiUrlService,
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {
