@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
-import {QuestionService} from '../../services/question/question-data.service';
+import {QuestionDataService} from '../../services/question/question-data.service';
 import {Question} from '../../models/question';
 
 @Component({
@@ -10,25 +10,19 @@ import {Question} from '../../models/question';
 })
 
 export class QuestionsComponent implements OnInit {
-    questions;
+    questions: Question[];
     tags = new FormControl();
     tagList = ['PHP', 'Laravel', 'Javascript', 'Angular', 'Html', 'CSS'];
 
-    constructor(private questionService: QuestionService) {
+    constructor(private questionDataService: QuestionDataService) {
     }
 
     ngOnInit() {
-        this.getQuestions();
+        console.log(this.getQuestions());
     }
 
     getQuestions() {
-        this.questionService.getAllQuestions().subscribe(
-            data => {
-                this.questions = data
-            },
-            err => console.error(err),
-            () => console.log('done loading foods')
-        );
+        return this.questionDataService.getAllQuestions();
     }
 
 }
