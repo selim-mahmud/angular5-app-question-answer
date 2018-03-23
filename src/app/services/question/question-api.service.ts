@@ -23,16 +23,20 @@ export class QuestionApiService {
     /**
      * @return {Observable}
      */
-    public getAllQuestion(): Observable<Question[]> {
+    public getAllQuestions(){
         return this.httpClient
             .get(
                 this.apiUrlService.getAllResourceUrl(RESOURCE_NAME),
                 this.httpHeaderService.getHttpOptions()
             )
             .map(response => {
-                return response.map(item => {
-                    return new Question(item);
-                });
+                let questions = response.data.results;
+                questions = questions.map((question) => new Question(question));
+                return {
+                    'questions' : questions,
+                    'links' : response.links,
+                    'meta' : response.meta,
+                }
             })
             .catch(this.handleError);
     }

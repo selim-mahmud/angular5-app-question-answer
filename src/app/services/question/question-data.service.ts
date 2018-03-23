@@ -11,8 +11,8 @@ export class QuestionDataService {
     constructor(private questionApiService: QuestionApiService) {
     }
 
-    getAllQuestions(): Observable<Question[]> {
-        return this.questionApiService.getAllQuestion();
+    getAllQuestions() {
+        return this.questionApiService.getAllQuestions();
     }
 
     getQuestionById(questionId: string): Observable<Question> {

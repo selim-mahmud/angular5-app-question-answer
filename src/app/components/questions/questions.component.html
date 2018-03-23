@@ -18,10 +18,10 @@
 <mat-tab-group>
     <mat-tab label="Latest">
         <br />
-        <div class="single-question">
+        <div *ngFor="let question of questions" class="single-question">
             <div fxLayout="row" fxLayout.xs="column" class="content">
                 <div fxFlex="15" fxFlex.sm="20" class="left">
-                    <h4>210</h4>
+                    <h4>{{question.downVote}}</h4>
                     <p>votes</p>
                     <div class="answer">
                         <h4>23</h4>
@@ -30,56 +30,8 @@
                     <p class="date">March 12, 2018</p>
                 </div>
                 <div fxFlex="85" fxFlex.sm="80" class="right">
-                    <h4><a href="/">This is the title of the question</a></h4>
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
-                        ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis
-                        dis parturient montes, nascetur ridiculus mus. </p>
-                    <span class="label label-default">PHP</span>
-                    <span class="label label-default">Javascript</span>
-                    <span class="label label-default">Angular</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="single-question">
-            <div fxLayout="row" fxLayout.xs="column" class="content">
-                <div fxFlex="15" fxFlex.sm="20" class="left">
-                    <h4>210</h4>
-                    <p>votes</p>
-                    <div class="answer">
-                        <h4>23</h4>
-                        <p>answers</p>
-                    </div>
-                    <p class="date">March 12, 2018</p>
-                </div>
-                <div fxFlex="85" fxFlex.sm="80" class="right">
-                    <h4><a href="/">This is the title of the question</a></h4>
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
-                        ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis
-                        dis parturient montes, nascetur ridiculus mus. </p>
-                    <span class="label label-default">PHP</span>
-                    <span class="label label-default">Javascript</span>
-                    <span class="label label-default">Angular</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="single-question">
-            <div fxLayout="row" fxLayout.xs="column" class="content">
-                <div fxFlex="15" fxFlex.sm="20" class="left">
-                    <h4>210</h4>
-                    <p>votes</p>
-                    <div class="answer">
-                        <h4>23</h4>
-                        <p>answers</p>
-                    </div>
-                    <p class="date">March 12, 2018</p>
-                </div>
-                <div fxFlex="85" fxFlex.sm="80" class="right">
-                    <h4><a href="/">This is the title of the question</a></h4>
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
-                        ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis
-                        dis parturient montes, nascetur ridiculus mus. </p>
+                    <h4><a href="/">{{question.title}}</a></h4>
+                    <p>{{question.description}}</p>
                     <span class="label label-default">PHP</span>
                     <span class="label label-default">Javascript</span>
                     <span class="label label-default">Angular</span>

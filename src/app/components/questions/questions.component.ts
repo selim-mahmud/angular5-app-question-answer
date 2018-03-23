@@ -11,6 +11,8 @@ import {Question} from '../../models/question';
 
 export class QuestionsComponent implements OnInit {
     questions: Question[];
+    links;
+    meta;
     tags = new FormControl();
     tagList = ['PHP', 'Laravel', 'Javascript', 'Angular', 'Html', 'CSS'];
 
@@ -18,10 +20,12 @@ export class QuestionsComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.questionDataService.getAllQuestions().subscribe( data => {
-            this.questions = data;
+        this.questionDataService.getAllQuestions().subscribe( response => {
+            console.log(response);
+            this.questions = response.questions;
+            this.links = response.links;
+            this.meta = response.meta;
         });
-        console.log(this.questions);
     }
 
     getQuestions() {
