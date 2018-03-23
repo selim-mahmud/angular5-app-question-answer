@@ -30,7 +30,7 @@ export class QuestionApiService {
                 this.httpHeaderService.getHttpOptions()
             )
             .map(response => {
-                return response.json().results.map(item => {
+                return response.map(item => {
                     return new Question(item);
                 });
             })

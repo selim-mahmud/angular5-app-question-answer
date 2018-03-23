@@ -35,7 +35,7 @@ export class HttpHeaderService {
         return {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
-                'Authorization': 'Basic ' + btoa(API_USERNAME + ':' + API_PASSWORD)
+                'Authorization': 'Basic ' + btoa(API_USERNAME + ':' + API_PASSWORD),
             })
         };
     }
