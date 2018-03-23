@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import {Question} from '../../models/question';
-import {QuestionApiService} from "./question-api.service";
+import {QuestionApiService} from './question-api.service';
 
 @Injectable()
 export class QuestionDataService {

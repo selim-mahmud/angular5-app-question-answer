@@ -1,11 +1,11 @@
 import {Injectable} from '@angular/core';
 import {HttpHeaderService} from '../http-header.service';
-import {ApiUrlService} from "../api-url.service";
-import {Question} from "../../models/question";
+import {ApiUrlService} from '../api-url.service';
+import {Question} from '../../models/question';
 import {HttpClient} from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
-import "rxjs/add/operator/map";
-import "rxjs/add/operator/catch";
+import {Observable} from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 
 const RESOURCE_NAME = 'questions';
@@ -13,11 +13,10 @@ const RESOURCE_NAME = 'questions';
 @Injectable()
 export class QuestionApiService {
 
-    constructor(
-        private httpHeaderService: HttpHeaderService,
-        private apiUrlService: ApiUrlService,
-        private httpClient: HttpClient
-    ) {
+    constructor(private httpHeaderService: HttpHeaderService,
+                private apiUrlService: ApiUrlService,
+                private httpClient: HttpClient)
+    {
         //
     }
 
@@ -31,10 +30,9 @@ export class QuestionApiService {
                 this.httpHeaderService.getHttpOptions()
             )
             .map(response => {
-
-                return response;
-                //const questions = response;
-                //return questions.map((question) => new Question(question));
+                return response.json().results.map(item => {
+                    return new Question(item);
+                });
             })
             .catch(this.handleError);
     }

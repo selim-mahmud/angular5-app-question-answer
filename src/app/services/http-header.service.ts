@@ -33,7 +33,10 @@ export class HttpHeaderService {
      */
     getHttpOptions() {
         return {
-            headers: this.headers
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json',
+                'Authorization': 'Basic ' + btoa(API_USERNAME + ':' + API_PASSWORD)
+            })
         };
     }
 

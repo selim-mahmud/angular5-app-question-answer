@@ -18,11 +18,16 @@ export class QuestionsComponent implements OnInit {
     }
 
     ngOnInit() {
-        console.log(this.getQuestions());
+        this.questionDataService.getAllQuestions().subscribe( data => {
+            this.questions = data;
+        });
+        console.log(this.questions);
     }
 
     getQuestions() {
-        return this.questionDataService.getAllQuestions();
+        this.questionDataService.getAllQuestions().subscribe( data => {
+            this.questions = data;
+        });
     }
 
 }
