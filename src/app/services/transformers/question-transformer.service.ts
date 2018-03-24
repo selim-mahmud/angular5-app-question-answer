@@ -33,6 +33,8 @@ export class QuestionTransformerService {
             'solved': 'solved',
             'up_vote': 'upVote',
             'down_vote': 'downVote',
+            'created_at': 'createdAt',
+            'updated_at': 'updatedAt',
             'user': 'user',
             'answers': 'answers',
             'tags': 'tags',

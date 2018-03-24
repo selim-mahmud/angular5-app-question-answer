@@ -28,9 +28,13 @@ export class QuestionApiService {
      * @return {Observable}
      */
     public getAllQuestions(){
+
+        let relations: string[] = ['answers', 'tags'];
+        let apiUrl:string = this.apiUrlService.baseResourceUrl(RESOURCE_NAME).allFields().addRelations(relations).getUrl();
+
         return this.httpClient
             .get(
-                this.apiUrlService.allResourceUrl(RESOURCE_NAME).allFields().getUrl(),
+                apiUrl,
                 this.httpHeaderService.getHttpOptions()
             )
             .map(response => {

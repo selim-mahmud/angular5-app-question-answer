@@ -1,4 +1,5 @@
 import {Injectable} from '@angular/core';
+import * as moment from 'moment';
 
 @Injectable()
 export class Question {
@@ -12,8 +13,16 @@ export class Question {
     solved: boolean = false;
     upVote: number = 0;
     downVote: number = 0;
+    createdAt = {};
+    updatedAt = {};
+    answers = [];
+    tags = [];
 
     constructor(values: Object = {}) {
         Object.assign(this, values);
+    }
+
+    getCreatedAt(){
+        return moment(this.createdAt.date, 'YYYY-MM-DD').format('Do MMM, YYYY');
     }
 }

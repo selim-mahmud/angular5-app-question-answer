@@ -18,34 +18,38 @@ export class ApiUrlService {
      * @param {string} resourceName
      * @return {this}
      */
-    allResourceUrl(resourceName: string): this {
+    baseResourceUrl(resourceName: string): this {
         this.resourceUrl = this.resourceUrl + resourceName;
         return this;
     }
 
     /**
-     * @param {string} resourceName
-     * @param {string} resourceId
-     * @return {string}
-     */
-    getSingleResourceUrl(resourceName: string, resourceId: string): string {
-        return this.getBaseUrl() + resourceName + '/' + resourceId;
-    }
-
-    /**
-     * @param {string} resourceName
-     * @return {string}
-     */
-    getCreateResourceUrl(resourceName: string): string {
-        return this.getBaseUrl() + resourceName;
-    }
-
-    /**
-     * @param {string} resourceName
      * @return {this}
      */
     allFields(): this {
-        this.resourceUrl = this.resourceUrl + '?fields=all';
+        let param = '?fields=all';
+        if(this.resourceUrl.includes('?')){
+            param = '&fields=all';
+        }
+        this.resourceUrl = this.resourceUrl + param;
+        return this;
+    }
+
+    /**
+     * @return {this}
+     */
+    addRelations(relations: string[]): this {
+
+        let param = '?';
+        if(this.resourceUrl.includes('?')){
+            param = '&';
+        }
+
+        for (let i = 0; i < relations.length; i++) {
+            param += '&add_relations[' + i + ']='+relations[i];
+        }
+
+        this.resourceUrl = this.resourceUrl + param;
         return this;
     }
 
