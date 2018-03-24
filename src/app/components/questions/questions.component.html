@@ -18,6 +18,7 @@
 <mat-tab-group>
     <mat-tab label="Latest">
         <br />
+        <mat-spinner *ngIf="loadingSpinner"></mat-spinner>
         <div *ngFor="let question of questions" class="single-question">
             <div fxLayout="row" fxLayout.xs="column" class="content">
                 <div fxFlex="15" fxFlex.sm="20" class="left">

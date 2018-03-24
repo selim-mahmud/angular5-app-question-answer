@@ -7,15 +7,19 @@ import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
+import {QuestionTransformerService} from "../transformers/question-transformer.service";
 
 const RESOURCE_NAME = 'questions';
 
 @Injectable()
 export class QuestionApiService {
 
-    constructor(private httpHeaderService: HttpHeaderService,
-                private apiUrlService: ApiUrlService,
-                private httpClient: HttpClient)
+    constructor(
+        private httpHeaderService: HttpHeaderService,
+        private apiUrlService: ApiUrlService,
+        private httpClient: HttpClient,
+        private questionTransformationService: QuestionTransformerService
+    )
     {
         //
     }
@@ -26,12 +30,14 @@ export class QuestionApiService {
     public getAllQuestions(){
         return this.httpClient
             .get(
-                this.apiUrlService.getAllResourceUrl(RESOURCE_NAME),
+                this.apiUrlService.allResourceUrl(RESOURCE_NAME).allFields().getUrl(),
                 this.httpHeaderService.getHttpOptions()
             )
             .map(response => {
                 let questions = response.data.results;
-                questions = questions.map((question) => new Question(question));
+                questions = questions.map(
+                    (question) => new Question(this.questionTransformationService.transformInputs(question))
+                );
                 return {
                     'questions' : questions,
                     'links' : response.links,

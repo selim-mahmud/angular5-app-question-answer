@@ -21,6 +21,10 @@ import {QuestionDataService} from './services/question/question-data.service';
 import { HttpHeaderService } from './services/http-header.service';
 import { QuestionApiService } from './services/question/question-api.service';
 import { ApiUrlService } from './services/api-url.service';
+import {QuestionTransformerService} from "./services/transformers/question-transformer.service";
+import { AnswerTransformerService } from './services/transformers/answer-transformer.service';
+import { TagTransformerService } from './services/transformers/tag-transformer.service';
+import { UserTransformerService } from './services/transformers/user-transformer.service';
 
 @NgModule({
     declarations: [
@@ -49,6 +53,10 @@ import { ApiUrlService } from './services/api-url.service';
         HttpHeaderService,
         QuestionApiService,
         ApiUrlService,
+        QuestionTransformerService,
+        AnswerTransformerService,
+        TagTransformerService,
+        UserTransformerService
     ],
     bootstrap: [AppComponent]
 })

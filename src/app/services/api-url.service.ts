@@ -6,6 +6,8 @@ const API_BASE_URL = environment.apiBaseUrl;
 @Injectable()
 export class ApiUrlService {
 
+    resourceUrl: string = API_BASE_URL;
+
     /**
      * @constructor
      */
@@ -14,10 +16,11 @@ export class ApiUrlService {
 
     /**
      * @param {string} resourceName
-     * @return {string}
+     * @return {this}
      */
-    getAllResourceUrl(resourceName: string): string {
-        return this.getBaseUrl() + resourceName;
+    allResourceUrl(resourceName: string): this {
+        this.resourceUrl = this.resourceUrl + resourceName;
+        return this;
     }
 
     /**
@@ -38,11 +41,20 @@ export class ApiUrlService {
     }
 
     /**
+     * @param {string} resourceName
+     * @return {this}
+     */
+    allFields(): this {
+        this.resourceUrl = this.resourceUrl + '?fields=all';
+        return this;
+    }
+
+    /**
      * get api base url
      * @return {string}
      */
-    getBaseUrl(): string {
-        return API_BASE_URL;
+    getUrl(): string {
+        return this.resourceUrl;
     }
 
 }

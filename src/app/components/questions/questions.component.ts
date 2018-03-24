@@ -13,6 +13,7 @@ export class QuestionsComponent implements OnInit {
     questions: Question[];
     links;
     meta;
+    loadingSpinner: boolean = true;
     tags = new FormControl();
     tagList = ['PHP', 'Laravel', 'Javascript', 'Angular', 'Html', 'CSS'];
 
@@ -25,6 +26,7 @@ export class QuestionsComponent implements OnInit {
             this.questions = response.questions;
             this.links = response.links;
             this.meta = response.meta;
+            this.loadingSpinner = false;
         });
     }
 
