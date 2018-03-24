@@ -25,6 +25,10 @@ import {QuestionTransformerService} from "./services/transformers/question-trans
 import { AnswerTransformerService } from './services/transformers/answer-transformer.service';
 import { TagTransformerService } from './services/transformers/tag-transformer.service';
 import { UserTransformerService } from './services/transformers/user-transformer.service';
+import { LatestQuestionsComponent } from './components/questions/latest-questions/latest-questions/latest-questions.component';
+import { FeaturedQuestionsComponent } from './components/questions/featured-questions/featured-questions/featured-questions.component';
+import { PopularQuestionsComponent } from './components/questions/popular-questions/popular-questions/popular-questions.component';
+import { UnansweredQuestionsComponent } from './components/questions/unanswered-questions/unanswered-questions/unanswered-questions.component';
 
 @NgModule({
     declarations: [
@@ -38,6 +42,10 @@ import { UserTransformerService } from './services/transformers/user-transformer
         RegisterComponent,
         LoginComponent,
         CreateQuestionComponent,
+        LatestQuestionsComponent,
+        FeaturedQuestionsComponent,
+        PopularQuestionsComponent,
+        UnansweredQuestionsComponent,
     ],
     imports: [
         BrowserModule,
