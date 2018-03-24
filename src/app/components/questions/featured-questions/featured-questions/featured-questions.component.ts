@@ -17,7 +17,7 @@ export class FeaturedQuestionsComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.questionDataService.getAllQuestions().subscribe(response => {
+        this.questionDataService.getFeaturedQuestions().subscribe(response => {
             this.featuredQuestions = response.questions;
             this.links = response.links;
             this.meta = response.meta;

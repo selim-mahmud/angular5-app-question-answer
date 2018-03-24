@@ -19,7 +19,6 @@ export class LatestQuestionsComponent implements OnInit {
 
     ngOnInit() {
         this.questionDataService.getAllQuestions().subscribe( response => {
-            console.log(response);
             this.latestQuestions = response.questions;
             this.links = response.links;
             this.meta = response.meta;

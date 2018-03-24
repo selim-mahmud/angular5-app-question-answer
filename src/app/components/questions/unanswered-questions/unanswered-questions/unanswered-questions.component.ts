@@ -17,7 +17,7 @@ export class UnansweredQuestionsComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.questionDataService.getAllQuestions().subscribe(response => {
+        this.questionDataService.getUnansweredQuestions().subscribe(response => {
             this.unansweredQuestions = response.questions;
             this.links = response.links;
             this.meta = response.meta;

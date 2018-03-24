@@ -17,7 +17,7 @@ export class PopularQuestionsComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.questionDataService.getAllQuestions().subscribe(response => {
+        this.questionDataService.getPopularQuestions().subscribe(response => {
             this.popularQuestions = response.questions;
             this.links = response.links;
             this.meta = response.meta;
