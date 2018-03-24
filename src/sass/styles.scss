@@ -7,50 +7,50 @@ html, body {
   height: 100%;
 }
 
-body{
-  margin:0;
+body {
+  margin: 0;
 }
 
-p{
+p {
   margin: 0 0 10px 0;
 }
 
-h1, h2, h3{
+h1, h2, h3 {
   margin: 0 0 12px 0;
 }
 
-h4, h5, h6{
+h4, h5, h6 {
   margin: 0 0 10px 0;
 }
 
-a{
+a {
   text-decoration: none;
 }
 
-.content-area{
-  max-width:1200px;
+.content-area {
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 10px;
 }
 
 //background
-.grey-background{
+.grey-background {
   background-color: $gray-more-light;
   border-radius: 3px;
-  padding:15px;
+  padding: 15px;
 }
 
 //custom scss
-.footer{
+.footer {
   margin-top: 30px;
   padding: 15px 0;
   border-radius: 3px;
-  p{
+  p {
     font-size: $font-size-very-small;
   }
 }
 
-.veryDarkBG{
+.veryDarkBG {
   background-color: $gray-darker;
   color: $white-darker;
 }
@@ -58,66 +58,66 @@ a{
 //style for angular element
 input.ng-invalid.ng-touched,
 textarea.ng-invalid.ng-touched,
-select.ng-invalid.ng-touched{
+select.ng-invalid.ng-touched {
   border: 1px solid $brand-danger;
 }
 
-.errorMessage{
+.errorMessage {
   font-size: $font-size-very-small;
   color: $brand-danger;
 }
 
 //style for question
-.single-question{
+.single-question {
 
   border-bottom: 1px solid $gray-more-light;
   padding-bottom: 15px;
   margin-bottom: 25px;
 
-  .left{
+  .left {
+    text-align: center;
+    margin: 5px 15px 5px 0;
 
-    h4{
+    h4 {
       margin: 0;
-      text-align: center;
     }
 
-    p{
+    p {
       margin: 0;
       text-align: center;
       font-size: $font-size-very-small;
     }
 
-    .date{
-      text-align: left;
+    .date {
       color: $brand-warning;
     }
 
-    .answer{
+    .answer {
       background-color: $brand-success;
       border-radius: 3px;
       padding: 10px 15px;
       color: $white-base;
-      margin: 5px 15px 5px 0;
       font-weight: bold;
     }
+
+    .vote {
+      margin-top: 10px;
+      font-size: $font-size-small;
+    }
+
+    mat-icon.thumb-up, mat-icon.thumb-down {
+      font-size: $font-size-small;
+    }
+
   }
 
-  .right{
-    .label{
+  .right {
+    .label {
       font-size: $font-size-very-small;
     }
 
-    p{
+    p {
       font-size: $font-size-small;
     }
   }
-}
-
-.label{
-  padding: 5px 7px;
-  border-radius: 3px;
-}
-
-.label-default{
-  background-color: $gray-lighter;
 }

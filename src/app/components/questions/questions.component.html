@@ -22,20 +22,24 @@
         <div *ngFor="let question of questions" class="single-question">
             <div fxLayout="row" fxLayout.xs="column" class="content">
                 <div fxFlex="15" fxFlex.sm="20" class="left">
-                    <h4>{{question.downVote}}</h4>
-                    <p>votes</p>
                     <div class="answer">
                         <h4>23</h4>
                         <p>answers</p>
+                    </div>
+                    <div class="vote">
+                        <span>{{question.upVote}} <mat-icon color="primary" class="thumb-up">thumb_up</mat-icon></span>
+                        <span>{{question.downVote}} <mat-icon color="accent" class="thumb-down">thumb_down</mat-icon></span>
                     </div>
                     <p class="date">March 12, 2018</p>
                 </div>
                 <div fxFlex="85" fxFlex.sm="80" class="right">
                     <h4><a href="/">{{question.title}}</a></h4>
                     <p>{{question.description}}</p>
-                    <span class="label label-default">PHP</span>
-                    <span class="label label-default">Javascript</span>
-                    <span class="label label-default">Angular</span>
+                    <mat-chip-list>
+                        <mat-chip>PHP</mat-chip>
+                        <mat-chip>Javascript</mat-chip>
+                        <mat-chip>Angular</mat-chip>
+                    </mat-chip-list>
                 </div>
             </div>
         </div>

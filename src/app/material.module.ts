@@ -1,6 +1,7 @@
 import {NgModule} from "@angular/core";
 import {
-    MatButtonModule, MatIconModule, MatInputModule, MatListModule, MatProgressSpinnerModule, MatSelectModule,
+    MatButtonModule, MatChipsModule, MatIconModule, MatInputModule, MatListModule, MatProgressSpinnerModule,
+    MatSelectModule,
     MatTabsModule,
     MatToolbarModule
 } from "@angular/material";
@@ -19,6 +20,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
         MatSelectModule,
         MatTabsModule,
         MatProgressSpinnerModule,
+        MatChipsModule,
     ],
     exports: [
         MatButtonModule,
@@ -31,6 +33,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
         MatSelectModule,
         MatTabsModule,
         MatProgressSpinnerModule,
+        MatChipsModule,
     ]
 })
 
