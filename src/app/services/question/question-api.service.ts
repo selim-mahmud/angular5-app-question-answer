@@ -14,6 +14,12 @@ const RESOURCE_NAME = 'questions';
 @Injectable()
 export class QuestionApiService {
 
+    response: any = {
+        'data': null,
+        'links': null,
+        'meta': null
+    };
+
     constructor(
         private httpHeaderService: HttpHeaderService,
         private httpClient: HttpClient,
@@ -117,14 +123,15 @@ export class QuestionApiService {
                 this.httpHeaderService.getHttpOptions()
             )
             .map(response => {
-                let questions = response.data.results;
+                this.response = response;
+                let questions = this.response.data.results;
                 questions = questions.map(
                     (question) => new Question(this.questionTransformationService.transformInputs(question))
                 );
                 return {
                     'questions' : questions,
-                    'links' : response.links,
-                    'meta' : response.meta,
+                    'links' : this.response.links,
+                    'meta' : this.response.meta,
                 }
             })
             .catch(this.handleError);
@@ -134,65 +141,66 @@ export class QuestionApiService {
      * @param {Question} question
      * @return {Observable}
      */
-    public createQuestion(question: Question): Observable<Question> {
-        return this.httpClient
-            .post(
-                this.apiUrlService.getCreateResourceUrl(RESOURCE_NAME),
-                question,
-                this.httpHeaderService.getHttpOptions()
-            )
-            .map(response => {
-                return new Question(response);
-            })
-            .catch(this.handleError);
-    }
+    // public createQuestion(question: Question): Observable<Question> {
+    //
+    //     return this.httpClient
+    //         .post(
+    //             this.apiUrlService.getCreateResourceUrl(RESOURCE_NAME),
+    //             question,
+    //             this.httpHeaderService.getHttpOptions()
+    //         )
+    //         .map(response => {
+    //             return new Question(response);
+    //         })
+    //         .catch(this.handleError);
+    // }
 
     /**
      * @param {string} questionId
      * @return {Observable}
      */
-    public getQuestionById(questionId: string): Observable<Question> {
-        return this.httpClient
-            .get(
-                this.apiUrlService.getSingleResourceUrl(RESOURCE_NAME, questionId),
-                this.httpHeaderService.getHttpOptions()
-            )
-            .map(response => {
-                return new Question(response);
-            })
-            .catch(this.handleError);
-    }
+    // public getQuestionById(questionId: string): Observable<Question> {
+    //     return this.httpClient
+    //         .get(
+    //             this.apiUrlService.getSingleResourceUrl(RESOURCE_NAME, questionId),
+    //             this.httpHeaderService.getHttpOptions()
+    //         )
+    //         .map(response => {
+    //             return new Question(response);
+    //         })
+    //         .catch(this.handleError);
+    // }
 
     /**
      * @param {Question} question
      * @return {Observable}
      */
-    public updateQuestion(question: Question): Observable<Question> {
-        return this.httpClient
-            .put(
-                this.apiUrlService.getSingleResourceUrl(RESOURCE_NAME, question.id),
-                question,
-                this.httpHeaderService.getHttpOptions()
-            )
-            .map(response => {
-                return new Question(response);
-            })
-            .catch(this.handleError);
-    }
+    // public updateQuestion(question: Question): Observable<Question> {
+    //     return this.httpClient
+    //         .put(
+    //             this.apiUrlService.getSingleResourceUrl(RESOURCE_NAME, question.id),
+    //             question,
+    //             this.httpHeaderService.getHttpOptions()
+    //         )
+    //         .map(response => {
+    //             return new Question(response);
+    //         })
+    //         .catch(this.handleError);
+    // }
 
     /**
      * @param {string} questionId
      * @return {Observable}
      */
-    public deleteQuestionById(questionId: string): Observable<null> {
-        return this.httpClient
-            .delete(
-                this.apiUrlService.getSingleResourceUrl(RESOURCE_NAME, questionId),
-                this.httpHeaderService.getHttpOptions()
-            )
-            .map(response => null)
-            .catch(this.handleError);
-    }
+    // public deleteQuestionById(questionId: string): Observable<null> {
+    //     return this.httpClient
+    //         .delete(
+    //             this.apiUrlService.getSingleResourceUrl(RESOURCE_NAME, questionId),
+    //             this.httpHeaderService.getHttpOptions()
+    //         )
+    //         .map(response => null)
+    //         .catch(this.handleError);
+    // }
 
     private handleError(error: Response | any) {
         return Observable.throw(error);

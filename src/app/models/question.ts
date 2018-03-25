@@ -13,8 +13,8 @@ export class Question {
     solved: boolean = false;
     upVote: number = 0;
     downVote: number = 0;
-    createdAt = {};
-    updatedAt = {};
+    createdAt = {'date': null, 'timezone_type': null, 'timezone': null};
+    updatedAt = {'date': null, 'timezone_type': null, 'timezone': null};
     answers = [];
     tags = [];
 

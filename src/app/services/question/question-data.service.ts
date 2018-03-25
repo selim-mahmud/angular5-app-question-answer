@@ -27,21 +27,21 @@ export class QuestionDataService {
         return this.questionApiService.getUnansweredQuestions();
     }
 
-    getQuestionById(questionId: string): Observable<Question> {
-        return this.questionApiService.getQuestionById(questionId);
-    }
-
-    addQuestion(question: Question): Observable<Question> {
-        return this.questionApiService.createQuestion(question);
-    }
-
-    updateQuestion(question: Question): Observable<Question> {
-        return this.questionApiService.updateQuestion(question);
-    }
-
-    deleteQuestionById(questionId: string): Observable<Question> {
-        return this.questionApiService.deleteQuestionById(questionId);
-    }
+    // getQuestionById(questionId: string): Observable<Question> {
+    //     return this.questionApiService.getQuestionById(questionId);
+    // }
+    //
+    // addQuestion(question: Question): Observable<Question> {
+    //     return this.questionApiService.createQuestion(question);
+    // }
+    //
+    // updateQuestion(question: Question): Observable<Question> {
+    //     return this.questionApiService.updateQuestion(question);
+    // }
+    //
+    // deleteQuestionById(questionId: string): Observable<Question> {
+    //     return this.questionApiService.deleteQuestionById(questionId);
+    // }
 
 
     // toggleTodoComplete(todo: Question) {
