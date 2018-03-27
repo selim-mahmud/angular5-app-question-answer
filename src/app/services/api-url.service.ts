@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
-import {environment} from '../../environments/environment';
+import {ActivatedRoute} from '@angular/router';
+import {environment} from "../../environments/environment";
 
 const API_BASE_URL = environment.apiBaseUrl;
 
@@ -12,6 +13,7 @@ export class ApiUrlService {
      * @constructor
      */
     constructor() {
+
     }
 
     /**

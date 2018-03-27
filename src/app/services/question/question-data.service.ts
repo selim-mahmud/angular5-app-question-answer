@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import {Question} from '../../models/question';
 import {QuestionApiService} from './question-api.service';
+import {ActivatedRoute} from "@angular/router";
 
 @Injectable()
 export class QuestionDataService {
@@ -9,6 +10,7 @@ export class QuestionDataService {
     questions: Question[] = [];
 
     constructor(private questionApiService: QuestionApiService) {
+
     }
 
     getAllQuestions() {

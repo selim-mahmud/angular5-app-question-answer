@@ -8,6 +8,8 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 import {QuestionTransformerService} from "../transformers/question-transformer.service";
+import {ActivatedRoute} from "@angular/router";
+import {AppUrlService} from "../app-url.service";
 
 const RESOURCE_NAME = 'questions';
 
@@ -23,26 +25,24 @@ export class QuestionApiService {
     constructor(
         private httpHeaderService: HttpHeaderService,
         private httpClient: HttpClient,
-        private questionTransformationService: QuestionTransformerService
-    )
-    {
-        //
+        private questionTransformationService: QuestionTransformerService,
+        private appUrlService: AppUrlService
+    ) {
+
     }
 
     /**
      * @return {Observable}
      */
-    public getAllQuestions(){
+    public getAllQuestions() {
+
+        this.appUrlService.getParam('dfds');
 
         let apiUrlService: ApiUrlService = new ApiUrlService();
 
         let relations: string[] = ['answers', 'tags'];
-        let apiUrl:string =
-            apiUrlService.
-            baseResourceUrl(RESOURCE_NAME).
-            allFields().
-            addRelations(relations).
-            getUrl();
+        let apiUrl: string =
+            apiUrlService.baseResourceUrl(RESOURCE_NAME).allFields().addRelations(relations).getUrl();
 
         return this.getHttpResponse(apiUrl)
     }
@@ -50,20 +50,15 @@ export class QuestionApiService {
     /**
      * @return {Observable}
      */
-    public getFeaturedQuestions(){
+    public getFeaturedQuestions() {
 
         let apiUrlService: ApiUrlService = new ApiUrlService();
         let relations: string[] = ['answers', 'tags'];
         let filters = [
             {'c': 'featured', 'o': '=', 'v': '1'}
         ];
-        let apiUrl:string =
-            apiUrlService.
-            baseResourceUrl(RESOURCE_NAME).
-            allFields().
-            addColumnFilters(filters).
-            addRelations(relations).
-            getUrl();
+        let apiUrl: string =
+            apiUrlService.baseResourceUrl(RESOURCE_NAME).allFields().addColumnFilters(filters).addRelations(relations).getUrl();
 
         return this.getHttpResponse(apiUrl)
     }
@@ -71,7 +66,7 @@ export class QuestionApiService {
     /**
      * @return {Observable}
      */
-    public getPopularQuestions(){
+    public getPopularQuestions() {
 
         let apiUrlService: ApiUrlService = new ApiUrlService();
         let relations: string[] = ['answers', 'tags'];
@@ -79,13 +74,8 @@ export class QuestionApiService {
             ['up_vote', 'DESC'],
             ['down_vote', 'ASC']
         ];
-        let apiUrl:string =
-            apiUrlService.
-            baseResourceUrl(RESOURCE_NAME).
-            allFields().
-            addSortings(sortings).
-            addRelations(relations).
-            getUrl();
+        let apiUrl: string =
+            apiUrlService.baseResourceUrl(RESOURCE_NAME).allFields().addSortings(sortings).addRelations(relations).getUrl();
 
         return this.getHttpResponse(apiUrl)
     }
@@ -93,20 +83,15 @@ export class QuestionApiService {
     /**
      * @return {Observable}
      */
-    public getUnansweredQuestions(){
+    public getUnansweredQuestions() {
 
         let apiUrlService: ApiUrlService = new ApiUrlService();
         let relations: string[] = ['answers', 'tags'];
         let relationFilters = [
             {'rn': 'answers', 'ro': '=', 'rv': '0'}
         ];
-        let apiUrl:string =
-            apiUrlService.
-            baseResourceUrl(RESOURCE_NAME).
-            allFields().
-            addRelationFilters(relationFilters).
-            addRelations(relations).
-            getUrl();
+        let apiUrl: string =
+            apiUrlService.baseResourceUrl(RESOURCE_NAME).allFields().addRelationFilters(relationFilters).addRelations(relations).getUrl();
 
         return this.getHttpResponse(apiUrl)
     }
@@ -115,7 +100,7 @@ export class QuestionApiService {
      * @param {string} apiUrl
      * @return {Observable}
      */
-    getHttpResponse(apiUrl: string){
+    getHttpResponse(apiUrl: string) {
 
         return this.httpClient
             .get(
@@ -129,9 +114,9 @@ export class QuestionApiService {
                     (question) => new Question(this.questionTransformationService.transformInputs(question))
                 );
                 return {
-                    'questions' : questions,
-                    'links' : this.response.links,
-                    'meta' : this.response.meta,
+                    'questions': questions,
+                    'links': this.response.links,
+                    'meta': this.response.meta,
                 }
             })
             .catch(this.handleError);
