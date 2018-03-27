@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {Question} from '../../models/question';
 import {QuestionDataService} from '../../services/question/question-data.service';
-import {ActivatedRoute} from "@angular/router";
 
 @Component({
     selector: 'app-questions',

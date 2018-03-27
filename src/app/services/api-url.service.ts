@@ -1,49 +1,75 @@
-import {Injectable} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
-import {environment} from "../../environments/environment";
-
-const API_BASE_URL = environment.apiBaseUrl;
+import {Inject, Injectable} from '@angular/core';
+import {APP_CONFIG, AppConfig} from "../app-config.module";
+import {AppUrlService} from "./app-url.service";
 
 @Injectable()
 export class ApiUrlService {
 
-    resourceUrl: string = API_BASE_URL;
-
     /**
      * @constructor
      */
-    constructor() {
+    constructor(
+        @Inject(APP_CONFIG) private config: AppConfig,
+        private appUrlService: AppUrlService
+    ) {
 
     }
 
     /**
      * @param {string} resourceName
-     * @return {this}
+     * @return {string}
      */
-    baseResourceUrl(resourceName: string): this {
-        this.resourceUrl = this.resourceUrl + resourceName;
-        return this;
+    baseResourceUrl(resourceName: string): string {
+        return this.config.apiBaseUrl + resourceName;
     }
 
     /**
-     * @return {this}
+     * @param {string} resourceUrl
+     * @return {string}
      */
-    allFields(): this {
+    allFields(resourceUrl: string): string {
         let param = '?fields=all';
-        if(this.resourceUrl.includes('?')){
+        if(resourceUrl.includes('?')){
             param = '&fields=all';
         }
-        this.resourceUrl = this.resourceUrl + param;
-        return this;
+        return resourceUrl + param;
     }
 
     /**
-     * @return {this}
+     * @param {string} resourceUrl
+     * @return {string}
      */
-    addRelations(relations: string[]): this {
+    addPageNumber(resourceUrl: string): string {
+        let pageNumber: number = this.appUrlService.getCurrentPageNumber();
+        let param = '?page=' + pageNumber;
+        if(resourceUrl.includes('?')){
+            param = '&page=' + pageNumber;
+        }
+        return resourceUrl + param;
+    }
+
+    /**
+     * @param {string} resourceUrl
+     * @param {number} limit
+     * @return {string}
+     */
+    addPaginationLimit(resourceUrl: string, limit: number = 25): string {
+        let param = '?limit=' + limit;
+        if(resourceUrl.includes('?')){
+            param = '&limit=' + limit;
+        }
+        return resourceUrl + param;
+    }
+
+    /**
+     * @param {string} resourceUrl
+     * @param {string[]} relations
+     * @return {string}
+     */
+    addRelations(resourceUrl: string, relations: string[]): string {
 
         let param = '?';
-        if(this.resourceUrl.includes('?')){
+        if(resourceUrl.includes('?')){
             param = '&';
         }
 
@@ -56,17 +82,16 @@ export class ApiUrlService {
             }
         }
 
-        this.resourceUrl = this.resourceUrl + param;
-        return this;
+        return resourceUrl + param;
     }
 
     /**
-     * @return {this}
+     * @return {string}
      */
-    addColumnFilters(filters): this {
+    addColumnFilters(resourceUrl: string, filters): string {
 
         let param = '?';
-        if(this.resourceUrl.includes('?')){
+        if(resourceUrl.includes('?')){
             param = '&';
         }
 
@@ -81,17 +106,16 @@ export class ApiUrlService {
             param += '&columns[' + i + '][v]='+filters[i]['v'];
         }
 
-        this.resourceUrl = this.resourceUrl + param;
-        return this;
+        return resourceUrl + param;
     }
 
     /**
-     * @return {this}
+     * @return {string}
      */
-    addSortings(sortings: string[][]): this {
+    addSortings(resourceUrl: string, sortings: string[][]): string {
 
         let param = '?';
-        if(this.resourceUrl.includes('?')){
+        if(resourceUrl.includes('?')){
             param = '&';
         }
 
@@ -104,17 +128,16 @@ export class ApiUrlService {
             }
         }
 
-        this.resourceUrl = this.resourceUrl + param;
-        return this;
+        return resourceUrl + param;
     }
 
     /**
-     * @return {this}
+     * @return {string}
      */
-    addRelationFilters(relationFilters): this {
+    addRelationFilters(resourceUrl: string, relationFilters): string {
 
         let param = '?';
-        if(this.resourceUrl.includes('?')){
+        if(resourceUrl.includes('?')){
             param = '&';
         }
 
@@ -129,16 +152,7 @@ export class ApiUrlService {
             param += '&relations[' + i + '][rv]='+relationFilters[i]['rv'];
         }
 
-        this.resourceUrl = this.resourceUrl + param;
-        return this;
-    }
-
-    /**
-     * get api base url
-     * @return {string}
-     */
-    getUrl(): string {
-        return this.resourceUrl;
+        return resourceUrl + param;
     }
 
 }

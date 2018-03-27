@@ -27,6 +27,7 @@ import { TagTransformerService } from './services/transformers/tag-transformer.s
 import { UserTransformerService } from './services/transformers/user-transformer.service';
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { AppUrlService } from './services/app-url.service';
+import {AppConfigModule} from "./app-config.module";
 
 @NgModule({
     declarations: [
@@ -43,6 +44,7 @@ import { AppUrlService } from './services/app-url.service';
         PaginationComponent,
     ],
     imports: [
+        AppConfigModule,
         BrowserModule,
         AppRoutingModule,
         ReactiveFormsModule,

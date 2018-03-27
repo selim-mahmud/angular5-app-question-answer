@@ -1,20 +1,26 @@
-import {Injectable} from '@angular/core';
+import {Inject, Injectable} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
+import {APP_CONFIG, AppConfig} from "../app-config.module";
 
 @Injectable()
 export class AppUrlService {
 
-    params;
+    params: Object;
 
-    constructor(private route: ActivatedRoute) {
-    }
-
-    getParam(paramName: string) {
+    constructor(private route: ActivatedRoute, @Inject(APP_CONFIG) private config: AppConfig) {
         this.route
             .queryParams
             .subscribe(params => {
-                console.log(params['page']);
+                this.params = params;
             });
+    }
+
+    getCurrentPageNumber(){
+        return this.getParam(this.config.pageParamName);
+    }
+
+    getParam(paramName: string) {
+        return this.params[paramName] | 0;
     }
 
 }

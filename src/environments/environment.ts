@@ -9,4 +9,7 @@ export const environment = {
     apiBaseUrl: 'http://angular-api.dev-selim.com.au/api/v1/',
     apiUsername: 'smahmud',
     apiPassword: 'password',
+
+    pageParamName: 'page',
+
 };
