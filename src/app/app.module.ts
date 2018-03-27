@@ -25,6 +25,7 @@ import {QuestionTransformerService} from "./services/transformers/question-trans
 import { AnswerTransformerService } from './services/transformers/answer-transformer.service';
 import { TagTransformerService } from './services/transformers/tag-transformer.service';
 import { UserTransformerService } from './services/transformers/user-transformer.service';
+import { PaginationComponent } from './components/pagination/pagination.component';
 
 @NgModule({
     declarations: [
@@ -38,6 +39,7 @@ import { UserTransformerService } from './services/transformers/user-transformer
         RegisterComponent,
         LoginComponent,
         CreateQuestionComponent,
+        PaginationComponent,
     ],
     imports: [
         BrowserModule,

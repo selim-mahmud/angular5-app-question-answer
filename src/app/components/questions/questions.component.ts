@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
-import {MatTabChangeEvent} from "@angular/material";
-import {Question} from "../../models/question";
-import {QuestionDataService} from "../../services/question/question-data.service";
+import {Question} from '../../models/question';
+import {QuestionDataService} from '../../services/question/question-data.service';
 
 @Component({
     selector: 'app-questions',
@@ -19,50 +18,46 @@ export class QuestionsComponent implements OnInit {
     links;
     meta;
     loadingSpinner: boolean = true;
-    displayList: boolean = false;
     isRecords: boolean = false;
+
+    loading = false;
+    total = 0;
+    page = 1;
+    limit = 20;
 
     constructor(private questionDataService: QuestionDataService) {
     }
 
     ngOnInit() {
-        this.getQuestions(this.questionDataService.getAllQuestions());
+        this.getQuestions();
     }
 
-    onTabClick(event: MatTabChangeEvent) {
-
-        switch(event.index) {
-            case 0:
-                this.displayList = false;
-                this.loadingSpinner = true;
-                this.getQuestions(this.questionDataService.getAllQuestions());
-                break;
-            case 1:
-                this.displayList = false;
-                this.loadingSpinner = true;
-                this.getQuestions(this.questionDataService.getFeaturedQuestions());
-                break;
-            case 2:
-                this.displayList = false;
-                this.loadingSpinner = true;
-                this.getQuestions(this.questionDataService.getPopularQuestions());
-                break;
-            default:
-                this.displayList = false;
-                this.loadingSpinner = true;
-                this.getQuestions(this.questionDataService.getUnansweredQuestions());
-        }
-    }
-
-    getQuestions(observable){
-        observable.subscribe( response => {
+    getQuestions(): void {
+        this.loading = true;
+        this.questionDataService.getAllQuestions().subscribe(response => {
             this.questions = response.questions;
             this.links = response.links;
             this.meta = response.meta;
             this.loadingSpinner = false;
-            this.displayList = true;
             this.isRecords = this.questions.length === 0;
+            this.loading = false;
+            this.total = response.meta.total;
         });
+    }
+
+    goToPage(n: number): void {
+        this.page = n;
+        this.getQuestions();
+    }
+
+    onNext(): void {
+        this.page++;
+        this.getQuestions();
+    }
+
+    onPrev(): void {
+        this.page--;
+        this.getQuestions();
     }
 
 }
