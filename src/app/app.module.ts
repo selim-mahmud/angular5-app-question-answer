@@ -28,6 +28,7 @@ import { UserTransformerService } from './services/transformers/user-transformer
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { AppUrlService } from './services/app-url.service';
 import {AppConfigModule} from "./app-config.module";
+import { PaginationMetaTransformationService } from './services/transformers/pagination-meta-transformation.service';
 
 @NgModule({
     declarations: [
@@ -62,7 +63,8 @@ import {AppConfigModule} from "./app-config.module";
         AnswerTransformerService,
         TagTransformerService,
         UserTransformerService,
-        AppUrlService
+        AppUrlService,
+        PaginationMetaTransformationService
     ],
     bootstrap: [AppComponent]
 })

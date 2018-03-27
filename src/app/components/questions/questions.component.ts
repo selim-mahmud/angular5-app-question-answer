@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {Question} from '../../models/question';
 import {QuestionDataService} from '../../services/question/question-data.service';
+import {PaginationMetaTransformationService} from "../../services/transformers/pagination-meta-transformation.service";
+import {PaginationMeta} from "../../models/paginationMeta";
 
 @Component({
     selector: 'app-questions',
@@ -15,17 +17,14 @@ export class QuestionsComponent implements OnInit {
     tagList = ['PHP', 'Laravel', 'Javascript', 'Angular', 'Html', 'CSS'];
 
     questions: Question[];
-    links;
-    meta;
+    meta: PaginationMeta;
     loadingSpinner: boolean = true;
     isRecords: boolean = false;
 
-    loading = false;
-    total = 0;
-    page = 1;
-    limit = 20;
-
-    constructor(private questionDataService: QuestionDataService) {
+    constructor(
+        private questionDataService: QuestionDataService,
+        private metaTransform: PaginationMetaTransformationService
+        ) {
     }
 
     ngOnInit() {
@@ -33,31 +32,13 @@ export class QuestionsComponent implements OnInit {
     }
 
     getQuestions(): void {
-        this.loading = true;
         this.questionDataService.getAllQuestions().subscribe(response => {
             this.questions = response.questions;
-            this.links = response.links;
-            this.meta = response.meta;
+            this.meta = this.metaTransform.transformInputs(response.meta);
             this.loadingSpinner = false;
             this.isRecords = this.questions.length === 0;
-            this.loading = false;
-            this.total = response.meta.total;
+            console.log(this.meta);
         });
-    }
-
-    goToPage(n: number): void {
-        this.page = n;
-        this.getQuestions();
-    }
-
-    onNext(): void {
-        this.page++;
-        this.getQuestions();
-    }
-
-    onPrev(): void {
-        this.page--;
-        this.getQuestions();
     }
 
 }

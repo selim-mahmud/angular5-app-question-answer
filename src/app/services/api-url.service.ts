@@ -41,6 +41,9 @@ export class ApiUrlService {
      */
     addPageNumber(resourceUrl: string): string {
         let pageNumber: number = this.appUrlService.getCurrentPageNumber();
+        if(pageNumber === 0){
+            return resourceUrl;
+        }
         let param = '?page=' + pageNumber;
         if(resourceUrl.includes('?')){
             param = '&page=' + pageNumber;

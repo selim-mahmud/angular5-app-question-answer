@@ -1,16 +1,15 @@
-<div class="pagination" *ngIf="count > 0">
+<div class="pagination" *ngIf="getTotalCount() > 0">
   <div class="description">
-    <span class="page-counts">{{ getMin() }} - {{ getMax() }} of {{ count }}</span>
+    <span class="page-counts">{{ getMin() }} - {{ getMax() }} of {{ getTotalCount() }}</span>
     <span class="page-totals">{{ totalPages() }} pages</span>
   </div>
   <div class="numbers">
-    <button class="link" (click)="onPrev()" [disabled]="page === 1 || loading" [ngClass]="{ 'disabled': page === 1 || loading }">&lt; Previous</button>
+    <button class="link" [ngClass]="{ 'disabled': paginationMeta.currentPage === 1}">&lt; Previous</button>
 
     <button
             *ngFor="let pageNum of getPages()"
-            (click)="onPage(pageNum)"
-            [ngClass]="{'active': pageNum === page, 'disabled': loading}">{{ pageNum }}</button>
+            [ngClass]="{'active': pageNum === paginationMeta.currentPage}">{{ pageNum }}</button>
 
-    <button class="link" (click)="onNext(true)" [disabled]="lastPage() || loading" [ngClass]="{ 'disabled': lastPage() || loading }">Next &gt;</button>
+    <button class="link" [disabled]="lastPage()" [ngClass]="{ 'disabled': lastPage()}">Next &gt;</button>
   </div>
 </div>
