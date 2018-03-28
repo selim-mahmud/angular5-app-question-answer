@@ -8,11 +8,17 @@ import {UsersComponent} from "./components/users/users.component";
 import {RegisterComponent} from "./components/register/register.component";
 import {LoginComponent} from "./components/login/login.component";
 import {CreateQuestionComponent} from "./components/questions/create-question/create-question.component";
+import {FeaturedComponent} from "./components/questions/featured/featured.component";
+import {PopularComponent} from "./components/questions/popular/popular.component";
+import {UnansweredComponent} from "./components/questions/unanswered/unanswered.component";
 
 const routes: Routes = [
     {path: '', component: HomePageComponent},
     {path: 'questions', component: QuestionsComponent},
     {path: 'questions/create', component: CreateQuestionComponent},
+    {path: 'questions/featured', component: FeaturedComponent},
+    {path: 'questions/popular', component: PopularComponent},
+    {path: 'questions/unanswered', component: UnansweredComponent},
     {path: 'tags', component: TagsComponent},
     {path: 'users', component: UsersComponent},
     {path: 'register', component: RegisterComponent},

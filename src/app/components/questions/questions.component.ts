@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl} from '@angular/forms';
 import {Question} from '../../models/question';
 import {QuestionDataService} from '../../services/question/question-data.service';
 import {PaginationMetaTransformationService} from '../../services/transformers/pagination-meta-transformation.service';
@@ -12,9 +11,6 @@ import {PaginationMeta} from '../../models/paginationMeta';
 })
 
 export class QuestionsComponent implements OnInit {
-
-    tags = new FormControl();
-    tagList = ['PHP', 'Laravel', 'Javascript', 'Angular', 'Html', 'CSS'];
 
     questions: Question[];
     paginationMeta: PaginationMeta;

@@ -121,3 +121,16 @@ select.ng-invalid.ng-touched {
     }
   }
 }
+
+mat-spinner{
+  margin: 0 auto;
+}
+
+.question-type{
+  max-width: 260px;
+  margin: 0 auto;
+
+  mat-chip-list a{
+    color: $white-base;
+  }
+}

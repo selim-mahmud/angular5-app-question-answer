@@ -2,19 +2,19 @@
 
 <div class="question-type">
     <mat-chip-list>
-        <mat-chip color="accent" selected="true"><a routerLink="/questions/featured">Featured</a></mat-chip>
+        <mat-chip color="accent" selected="false"><a routerLink="/questions/featured">Featured</a></mat-chip>
         <mat-chip color="accent" selected="true"><a routerLink="/questions/popular">Popular</a></mat-chip>
-        <mat-chip color="accent" selected="true"><a routerLink="/questions/unanswered">Unanswered</a></mat-chip>
+        <mat-chip color="accent" selected="true"><a routerLink="/questions/featured">Unanswered</a></mat-chip>
     </mat-chip-list>
 </div>
 
-<br />
-<br />
+<br/>
+<br/>
 
 <mat-spinner *ngIf="loadingSpinner"></mat-spinner>
-<h2 *ngIf="!loadingSpinner">All questions:</h2>
+<h2 *ngIf="!loadingSpinner">Featured questions:</h2>
 <div *ngIf="isRecords">
-    <p>No questions founds.</p>
+    <p>No featured questions founds.</p>
 </div>
 <div>
     <div *ngFor="let question of questions" class="single-question">
@@ -44,5 +44,5 @@
     <app-pagination [paginationMeta]="paginationMeta" [pagesToShow]="6"></app-pagination>
 </div>
 
-<br />
-<br />
+<br/>
+<br/>

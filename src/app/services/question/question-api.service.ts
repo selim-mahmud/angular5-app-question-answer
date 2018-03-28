@@ -45,54 +45,66 @@ export class QuestionApiService {
         return this.getHttpResponse(apiUrl)
     }
 
-    // /**
-    //  * @return {Observable}
-    //  */
-    // public getFeaturedQuestions() {
-    //
-    //     let apiUrlService: ApiUrlService = new ApiUrlService();
-    //     let relations: string[] = ['answers', 'tags'];
-    //     let filters = [
-    //         {'c': 'featured', 'o': '=', 'v': '1'}
-    //     ];
-    //     let apiUrl: string =
-    //         apiUrlService.baseResourceUrl(RESOURCE_NAME).allFields().addColumnFilters(filters).addRelations(relations).getUrl();
-    //
-    //     return this.getHttpResponse(apiUrl)
-    // }
-    //
-    // /**
-    //  * @return {Observable}
-    //  */
-    // public getPopularQuestions() {
-    //
-    //     let apiUrlService: ApiUrlService = new ApiUrlService();
-    //     let relations: string[] = ['answers', 'tags'];
-    //     let sortings: string[][] = [
-    //         ['up_vote', 'DESC'],
-    //         ['down_vote', 'ASC']
-    //     ];
-    //     let apiUrl: string =
-    //         apiUrlService.baseResourceUrl(RESOURCE_NAME).allFields().addSortings(sortings).addRelations(relations).getUrl();
-    //
-    //     return this.getHttpResponse(apiUrl)
-    // }
-    //
-    // /**
-    //  * @return {Observable}
-    //  */
-    // public getUnansweredQuestions() {
-    //
-    //     let apiUrlService: ApiUrlService = new ApiUrlService();
-    //     let relations: string[] = ['answers', 'tags'];
-    //     let relationFilters = [
-    //         {'rn': 'answers', 'ro': '=', 'rv': '0'}
-    //     ];
-    //     let apiUrl: string =
-    //         apiUrlService.baseResourceUrl(RESOURCE_NAME).allFields().addRelationFilters(relationFilters).addRelations(relations).getUrl();
-    //
-    //     return this.getHttpResponse(apiUrl)
-    // }
+    /**
+     * @return {Observable}
+     */
+    public getFeaturedQuestions() {
+
+        let relations: string[] = ['answers', 'tags'];
+        let filters = [
+            {'c': 'featured', 'o': '=', 'v': '1'}
+        ];
+
+        let apiUrl: string = this.apiUrlService.baseResourceUrl(RESOURCE_NAME);
+        apiUrl = this.apiUrlService.allFields(apiUrl);
+        apiUrl = this.apiUrlService.addRelations(apiUrl, relations);
+        apiUrl = this.apiUrlService.addColumnFilters(apiUrl, filters);
+        apiUrl = this.apiUrlService.addPageNumber(apiUrl);
+        apiUrl = this.apiUrlService.addPaginationLimit(apiUrl, PAGINATION_LIMIT);
+
+        return this.getHttpResponse(apiUrl)
+    }
+
+    /**
+     * @return {Observable}
+     */
+    public getPopularQuestions() {
+
+        let relations: string[] = ['answers', 'tags'];
+        let sortings: string[][] = [
+            ['up_vote', 'DESC'],
+            ['down_vote', 'ASC']
+        ];
+
+        let apiUrl: string = this.apiUrlService.baseResourceUrl(RESOURCE_NAME);
+        apiUrl = this.apiUrlService.allFields(apiUrl);
+        apiUrl = this.apiUrlService.addRelations(apiUrl, relations);
+        apiUrl = this.apiUrlService.addSortings(apiUrl, sortings);
+        apiUrl = this.apiUrlService.addPageNumber(apiUrl);
+        apiUrl = this.apiUrlService.addPaginationLimit(apiUrl, PAGINATION_LIMIT);
+
+        return this.getHttpResponse(apiUrl)
+    }
+
+    /**
+     * @return {Observable}
+     */
+    public getUnansweredQuestions() {
+
+        let relations: string[] = ['answers', 'tags'];
+        let relationFilters = [
+            {'rn': 'answers', 'ro': '=', 'rv': '0'}
+        ];
+
+        let apiUrl: string = this.apiUrlService.baseResourceUrl(RESOURCE_NAME);
+        apiUrl = this.apiUrlService.allFields(apiUrl);
+        apiUrl = this.apiUrlService.addRelations(apiUrl, relations);
+        apiUrl = this.apiUrlService.addRelationFilters(apiUrl, relationFilters);
+        apiUrl = this.apiUrlService.addPageNumber(apiUrl);
+        apiUrl = this.apiUrlService.addPaginationLimit(apiUrl, PAGINATION_LIMIT);
+
+        return this.getHttpResponse(apiUrl)
+    }
 
     /**
      * @param {string} apiUrl
