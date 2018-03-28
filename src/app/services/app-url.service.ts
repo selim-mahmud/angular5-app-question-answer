@@ -34,7 +34,6 @@ export class AppUrlService {
                 }
             }
         }
-        queryParamsWithoutPagination = queryParamsWithoutPagination === '' ? '?' : queryParamsWithoutPagination;
 
         return fullUrlWithoutQueryParams + queryParamsWithoutPagination;
     }

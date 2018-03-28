@@ -17,7 +17,7 @@ export class PaginationComponent implements OnInit {
     }
 
     ngOnInit() {
-        console.log(this.appUrlService.getFullUrlExceptPaginationParam());
+        this.paginationMeta.path = this.appUrlService.getFullUrlExceptPaginationParam();
     }
 
     getTotalCount(): number {
