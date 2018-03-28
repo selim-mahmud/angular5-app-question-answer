@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {PaginationMeta} from '../../models/paginationMeta';
+import {AppUrlService} from '../../services/app-url.service';
 
 @Component({
     selector: 'app-pagination',
@@ -12,10 +13,11 @@ export class PaginationComponent implements OnInit {
     @Input() pagesToShow: number;
     @Input() total: number;
 
-    constructor() {
+    constructor(private appUrlService: AppUrlService) {
     }
 
     ngOnInit() {
+        console.log(this.appUrlService.getFullUrlExceptPaginationParam());
     }
 
     getTotalCount(): number {

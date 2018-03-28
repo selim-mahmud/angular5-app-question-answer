@@ -4,12 +4,12 @@
     <span class="page-totals">{{ totalPages() }} pages</span>
   </div>
   <div class="numbers">
-    <button class="link" [ngClass]="{ 'disabled': paginationMeta.currentPage === 1}">&lt; Previous</button>
+    <a class="link" href="/" [ngClass]="{ 'disabled': paginationMeta.currentPage === 1}">&lt; Previous</a>
 
-    <button
+    <a href="/"
             *ngFor="let pageNum of getPages()"
-            [ngClass]="{'active': pageNum === paginationMeta.currentPage}">{{ pageNum }}</button>
+            [ngClass]="{'active': pageNum === paginationMeta.currentPage}">{{ pageNum }}</a>
 
-    <button class="link" [disabled]="lastPage()" [ngClass]="{ 'disabled': lastPage()}">Next &gt;</button>
+    <a class="link" href="/" [ngClass]="{ 'disabled': lastPage()}">Next &gt;</a>
   </div>
 </div>

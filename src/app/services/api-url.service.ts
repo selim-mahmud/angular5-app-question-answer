@@ -29,7 +29,7 @@ export class ApiUrlService {
      */
     allFields(resourceUrl: string): string {
         let param = '?fields=all';
-        if(resourceUrl.includes('?')){
+        if (resourceUrl.includes('?')) {
             param = '&fields=all';
         }
         return resourceUrl + param;
@@ -40,12 +40,9 @@ export class ApiUrlService {
      * @return {string}
      */
     addPageNumber(resourceUrl: string): string {
-        let pageNumber: number = this.appUrlService.getCurrentPageNumber();
-        if(pageNumber === 0){
-            return resourceUrl;
-        }
+        const pageNumber: number = this.appUrlService.getCurrentPageNumber();
         let param = '?page=' + pageNumber;
-        if(resourceUrl.includes('?')){
+        if (resourceUrl.includes('?')) {
             param = '&page=' + pageNumber;
         }
         return resourceUrl + param;
@@ -58,7 +55,7 @@ export class ApiUrlService {
      */
     addPaginationLimit(resourceUrl: string, limit: number = 25): string {
         let param = '?limit=' + limit;
-        if(resourceUrl.includes('?')){
+        if (resourceUrl.includes('?')) {
             param = '&limit=' + limit;
         }
         return resourceUrl + param;
@@ -72,16 +69,16 @@ export class ApiUrlService {
     addRelations(resourceUrl: string, relations: string[]): string {
 
         let param = '?';
-        if(resourceUrl.includes('?')){
+        if (resourceUrl.includes('?')) {
             param = '&';
         }
 
         for (let i = 0; i < relations.length; i++) {
 
-            if(i === 0){
-                param += 'add_relations[' + i + ']='+relations[i];
-            }else{
-                param += '&add_relations[' + i + ']='+relations[i];
+            if (i === 0) {
+                param += 'add_relations[' + i + ']=' + relations[i];
+            } else {
+                param += '&add_relations[' + i + ']=' + relations[i];
             }
         }
 
@@ -94,19 +91,19 @@ export class ApiUrlService {
     addColumnFilters(resourceUrl: string, filters): string {
 
         let param = '?';
-        if(resourceUrl.includes('?')){
+        if (resourceUrl.includes('?')) {
             param = '&';
         }
 
         for (let i = 0; i < filters.length; i++) {
 
-            if(i === 0){
-                param += 'columns[' + i + '][c]='+filters[i]['c'];
-            }else{
-                param += '&columns[' + i + '][c]='+filters[i]['c'];
+            if (i === 0) {
+                param += 'columns[' + i + '][c]=' + filters[i]['c'];
+            } else {
+                param += '&columns[' + i + '][c]=' + filters[i]['c'];
             }
-            param += '&columns[' + i + '][o]='+filters[i]['o'];
-            param += '&columns[' + i + '][v]='+filters[i]['v'];
+            param += '&columns[' + i + '][o]=' + filters[i]['o'];
+            param += '&columns[' + i + '][v]=' + filters[i]['v'];
         }
 
         return resourceUrl + param;
@@ -118,16 +115,16 @@ export class ApiUrlService {
     addSortings(resourceUrl: string, sortings: string[][]): string {
 
         let param = '?';
-        if(resourceUrl.includes('?')){
+        if (resourceUrl.includes('?')) {
             param = '&';
         }
 
         for (let i = 0; i < sortings.length; i++) {
 
-            if(i === 0){
-                param += 'sortings[' + sortings[i][0] + ']='+sortings[i][1];
-            }else{
-                param += '&sortings[' + sortings[i][0] + ']='+sortings[i][1];
+            if (i === 0) {
+                param += 'sortings[' + sortings[i][0] + ']=' + sortings[i][1];
+            } else {
+                param += '&sortings[' + sortings[i][0] + ']=' + sortings[i][1];
             }
         }
 
@@ -140,19 +137,19 @@ export class ApiUrlService {
     addRelationFilters(resourceUrl: string, relationFilters): string {
 
         let param = '?';
-        if(resourceUrl.includes('?')){
+        if (resourceUrl.includes('?')) {
             param = '&';
         }
 
         for (let i = 0; i < relationFilters.length; i++) {
 
-            if(i === 0){
-                param += 'relations[' + i + '][rn]='+relationFilters[i]['rn'];
-            }else{
-                param += '&relations[' + i + '][rn]='+relationFilters[i]['rn'];
+            if (i === 0) {
+                param += 'relations[' + i + '][rn]=' + relationFilters[i]['rn'];
+            } else {
+                param += '&relations[' + i + '][rn]=' + relationFilters[i]['rn'];
             }
-            param += '&relations[' + i + '][ro]='+relationFilters[i]['ro'];
-            param += '&relations[' + i + '][rv]='+relationFilters[i]['rv'];
+            param += '&relations[' + i + '][ro]=' + relationFilters[i]['ro'];
+            param += '&relations[' + i + '][rv]=' + relationFilters[i]['rv'];
         }
 
         return resourceUrl + param;
