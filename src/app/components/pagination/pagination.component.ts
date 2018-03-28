@@ -11,7 +11,6 @@ export class PaginationComponent implements OnInit {
 
     @Input() paginationMeta: PaginationMeta;
     @Input() pagesToShow: number;
-    @Input() total: number;
 
     constructor(private appUrlService: AppUrlService) {
     }

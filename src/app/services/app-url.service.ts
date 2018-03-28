@@ -46,12 +46,16 @@ export class AppUrlService {
         return window.location.protocol + '//' + window.location.host + window.location.pathname;
     }
 
+    getPathWithoutQueryParams() {
+        return window.location.pathname;
+    }
+
     getCurrentPageNumber() {
         return this.getParam(this.config.pageParamName);
     }
 
     getParam(paramName: string) {
-        return this.params[paramName] | 1;
+        return this.params[paramName] || 1;
     }
 
     getParams() {

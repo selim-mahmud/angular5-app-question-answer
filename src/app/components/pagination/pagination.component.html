@@ -1,21 +1,20 @@
 <div class="pagination" *ngIf="getTotalCount() > 0">
     <div class="description">
-        <span class="page-counts">{{ getMin() }} - {{ getMax() }} of {{ getTotalCount() }}</span>
-        <span class="page-totals">{{ totalPages() }} pages</span>
+        <span class="page-counts"><strong>Showing:</strong> {{ getMin() }} - {{ getMax() }} of {{ getTotalCount() }}, </span>
+        <span class="page-totals"><strong>Total:</strong> {{ totalPages() }} pages</span>
     </div>
-    <div class="numbers">
-        <a class="link"
+    <div class="pages">
+        <a class="page"
            href="{{paginationMeta.path.indexOf('?') > -1 ? paginationMeta.path + '&page=' + (paginationMeta.currentPage - 1) : paginationMeta.path + '?page=' + (paginationMeta.currentPage - 1)}}"
-           [ngClass]="{ 'disabled': paginationMeta.currentPage === 1}">&lt; Previous</a>
-
-        <a *ngFor="let pageNum of getPages()"
-            href="{{paginationMeta.path.indexOf('?') > -1 ? paginationMeta.path + '&page=' + pageNum : paginationMeta.path + '?page=' + pageNum}}"
+           [ngClass]="{ 'inactive': paginationMeta.currentPage === 1}">previous</a>
+        <a class="page" *ngFor="let pageNum of getPages()"
+           href="{{paginationMeta.path.indexOf('?') > -1 ? paginationMeta.path + '&page=' + pageNum : paginationMeta.path + '?page=' + pageNum}}"
            [ngClass]="{'active': pageNum === paginationMeta.currentPage}">
             {{ pageNum }}
         </a>
-
-        <a class="link"
+        <a *ngIf="paginationMeta.currentPage <= totalPages() - (pagesToShow/2)" class = "inactive" href="#">...</a>
+        <a class="page"
            href="{{paginationMeta.path.indexOf('?') > -1 ? paginationMeta.path + '&page=' + (paginationMeta.currentPage + 1) : paginationMeta.path + '?page=' + (paginationMeta.currentPage + 1)}}"
-           [ngClass]="{ 'disabled': lastPage()}">Next &gt;</a>
+           [ngClass]="{ 'inactive': lastPage()}">next</a>
     </div>
 </div>

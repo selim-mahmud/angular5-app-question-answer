@@ -1,0 +1,33 @@
+@import '../../../sass/variables';
+
+.pagination{
+   margin-bottom: 30px;
+
+   .description{
+     font-size: $font-size-very-small;
+   }
+
+  .pages{
+
+    margin-top: 10px;
+
+    .page{
+      padding: 7px 18px;
+      background-color: $gray-more-light;
+      margin-right: 13px;
+    }
+
+    .page:hover, .active{
+      background-color: $brand-primary;
+      color: $white-base;
+    }
+
+    .inactive {
+      pointer-events: none;
+      cursor: default;
+      text-decoration: none;
+      color: $gray;
+    }
+
+  }
+ }
