@@ -2,8 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {Question} from '../../models/question';
 import {QuestionDataService} from '../../services/question/question-data.service';
-import {PaginationMetaTransformationService} from "../../services/transformers/pagination-meta-transformation.service";
-import {PaginationMeta} from "../../models/paginationMeta";
+import {PaginationMetaTransformationService} from '../../services/transformers/pagination-meta-transformation.service';
+import {PaginationMeta} from '../../models/paginationMeta';
 
 @Component({
     selector: 'app-questions',
@@ -17,7 +17,7 @@ export class QuestionsComponent implements OnInit {
     tagList = ['PHP', 'Laravel', 'Javascript', 'Angular', 'Html', 'CSS'];
 
     questions: Question[];
-    meta: PaginationMeta;
+    paginationMeta: PaginationMeta;
     loadingSpinner: boolean = true;
     isRecords: boolean = false;
 
@@ -34,10 +34,9 @@ export class QuestionsComponent implements OnInit {
     getQuestions(): void {
         this.questionDataService.getAllQuestions().subscribe(response => {
             this.questions = response.questions;
-            this.meta = this.metaTransform.transformInputs(response.meta);
+            this.paginationMeta = this.metaTransform.transformInputs(response.meta);
             this.loadingSpinner = false;
             this.isRecords = this.questions.length === 0;
-            console.log(this.meta);
         });
     }
 

@@ -1,13 +1,21 @@
+import {Component, Input, OnInit} from '@angular/core';
+import {PaginationMeta} from '../../models/paginationMeta';
+
 @Component({
     selector: 'app-pagination',
     templateUrl: './pagination.component.html',
     styleUrls: ['./pagination.component.scss']
 })
-export class PaginationComponent {
+export class PaginationComponent implements OnInit {
+
     @Input() paginationMeta: PaginationMeta;
     @Input() pagesToShow: number;
+    @Input() total: number;
 
     constructor() {
+    }
+
+    ngOnInit() {
     }
 
     getTotalCount(): number {
@@ -58,6 +66,3 @@ export class PaginationComponent {
         return pages;
     }
 }
-import { Component, Input} from '@angular/core';
-
-import {PaginationMeta} from "../../models/paginationMeta";

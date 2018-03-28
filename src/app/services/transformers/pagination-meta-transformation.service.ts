@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {PaginationMeta} from "../../models/paginationMeta";
+import {PaginationMeta} from '../../models/paginationMeta';
 
 @Injectable()
 export class PaginationMetaTransformationService {
@@ -9,13 +9,13 @@ export class PaginationMetaTransformationService {
 
     transformInputs(inputs): PaginationMeta
     {
-        let mapObj = this.getTransformationMap();
-        let transformInputs: PaginationMeta = new PaginationMeta();
+        const mapObj = this.getTransformationMap();
+        const transformInputs: PaginationMeta = new PaginationMeta();
 
-        for (let key in inputs) {
+        for (const key in inputs) {
             if (mapObj.hasOwnProperty(key)) {
 
-                transformInputs[mapObj[key]] = inputs[key]
+                transformInputs[mapObj[key]] = inputs[key];
             }
         }
 
@@ -31,7 +31,7 @@ export class PaginationMetaTransformationService {
             'per_page': 'perPage',
             'total': 'total',
             'path': 'path',
-        }
+        };
 
     }
 
