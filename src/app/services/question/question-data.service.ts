@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Question} from '../../models/question';
 import {QuestionApiService} from './question-api.service';
+import {Observable} from "rxjs/Observable";
 
 @Injectable()
 export class QuestionDataService {
@@ -27,10 +28,10 @@ export class QuestionDataService {
         return this.questionApiService.getUnansweredQuestions();
     }
 
-    // getQuestionById(questionId: string): Observable<Question> {
-    //     return this.questionApiService.getQuestionById(questionId);
-    // }
-    //
+    getQuestionById(id: string): Observable<Question> {
+        return this.questionApiService.getQuestionById(id);
+    }
+
     // addQuestion(question: Question): Observable<Question> {
     //     return this.questionApiService.createQuestion(question);
     // }

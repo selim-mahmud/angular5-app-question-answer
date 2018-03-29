@@ -32,6 +32,7 @@ import { PaginationMetaTransformationService } from './services/transformers/pag
 import { FeaturedComponent } from './components/questions/featured/featured.component';
 import { PopularComponent } from './components/questions/popular/popular.component';
 import { UnansweredComponent } from './components/questions/unanswered/unanswered.component';
+import { QuestionComponent } from './components/questions/question/question.component';
 
 @NgModule({
     declarations: [
@@ -49,6 +50,7 @@ import { UnansweredComponent } from './components/questions/unanswered/unanswere
         FeaturedComponent,
         PopularComponent,
         UnansweredComponent,
+        QuestionComponent,
     ],
     imports: [
         AppConfigModule,

@@ -25,6 +25,15 @@ export class ApiUrlService {
 
     /**
      * @param {string} resourceUrl
+     * @param {string} id
+     * @return {string}
+     */
+    singleResourceUrl(resourceUrl: string, id: string, ): string {
+        return resourceUrl + '/' + id;
+    }
+
+    /**
+     * @param {string} resourceUrl
      * @return {string}
      */
     allFields(resourceUrl: string): string {

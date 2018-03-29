@@ -11,6 +11,7 @@ import {CreateQuestionComponent} from "./components/questions/create-question/cr
 import {FeaturedComponent} from "./components/questions/featured/featured.component";
 import {PopularComponent} from "./components/questions/popular/popular.component";
 import {UnansweredComponent} from "./components/questions/unanswered/unanswered.component";
+import {QuestionComponent} from "./components/questions/question/question.component";
 
 const routes: Routes = [
     {path: '', component: HomePageComponent},
@@ -19,6 +20,7 @@ const routes: Routes = [
     {path: 'questions/featured', component: FeaturedComponent},
     {path: 'questions/popular', component: PopularComponent},
     {path: 'questions/unanswered', component: UnansweredComponent},
+    {path: 'questions/:id', component: QuestionComponent},
     {path: 'tags', component: TagsComponent},
     {path: 'users', component: UsersComponent},
     {path: 'register', component: RegisterComponent},

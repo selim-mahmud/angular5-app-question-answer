@@ -1,0 +1,56 @@
+<mat-spinner *ngIf="loadingSpinner"></mat-spinner>
+
+<div *ngIf="question">
+    <div class="single-question" *ngIf="question">
+
+        <div fxLayout="row" fxLayout.xs="column" class="content">
+            <div fxFlex="15" fxFlex.sm="20" class="left">
+                <div class="left-box">
+                    <p><a routerLink="/users/{{question.slug}}-{{question.id}}">{{question.user.name}}</a></p>
+                </div>
+                <div class="vote">
+                    <span>{{question.upVote}} <mat-icon color="primary" class="thumb-up">thumb_up</mat-icon></span>
+                    <span>{{question.downVote}} <mat-icon color="accent" class="thumb-down">thumb_down</mat-icon></span>
+                </div>
+                <p class="date">{{question.getCreatedAt()}}</p>
+            </div>
+            <div fxFlex="85" fxFlex.sm="80" class="right">
+                <h3>{{question.title}}</h3>
+                <mat-chip-list>
+                    <mat-chip *ngFor="let tag of question.tags">{{tag.name}}</mat-chip>
+                </mat-chip-list>
+                <br />
+                <p>{{question.description}}</p>
+
+            </div>
+        </div>
+    </div>
+
+    <h3>Answers:</h3>
+    <p *ngIf="question.answers.length == 0">No answer found.</p>
+    <div *ngIf="question.answers.length > 0">
+        <div class="single-question">
+            <div *ngFor="let answer of question.answers">
+                <div fxLayout="row" fxLayout.xs="column" class="content">
+                    <div fxFlex="15" fxFlex.sm="20" class="left">
+                        <div class="left-box">
+                            <p><a routerLink="/users/{{question.user.id}}">{{answer.user_id}}</a></p>
+                        </div>
+                        <div class="vote">
+                            <span>{{answer.up_vote}} <mat-icon color="primary" class="thumb-up">thumb_up</mat-icon></span>
+                            <span>{{answer.down_vote}} <mat-icon color="accent" class="thumb-down">thumb_down</mat-icon></span>
+                        </div>
+                        <p class="date">{{question.getCreatedAt()}}</p>
+                    </div>
+                    <div fxFlex="85" fxFlex.sm="80" class="right">
+                        <br />
+                        <p>{{answer.description}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

@@ -17,6 +17,7 @@ export class Question {
     updatedAt = {'date': null, 'timezone_type': null, 'timezone': null};
     answers = [];
     tags = [];
+    user = {'name': null, 'id': null, 'email': null};
 
     constructor(values: Object = {}) {
         Object.assign(this, values);

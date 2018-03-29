@@ -6,8 +6,7 @@ export class QuestionTransformerService {
     constructor() {
     }
 
-    transformInputs(inputs)
-    {
+    transformInputs(inputs) {
         let mapObj = this.getTransformationMap();
         let transformInputs = {};
 

@@ -21,12 +21,10 @@ export class QuestionApiService {
         'meta': null
     };
 
-    constructor(
-        private httpHeaderService: HttpHeaderService,
-        private httpClient: HttpClient,
-        private questionTransformationService: QuestionTransformerService,
-        private apiUrlService: ApiUrlService
-    ) {
+    constructor(private httpHeaderService: HttpHeaderService,
+                private httpClient: HttpClient,
+                private questionTransformationService: QuestionTransformerService,
+                private apiUrlService: ApiUrlService) {
 
     }
 
@@ -133,6 +131,30 @@ export class QuestionApiService {
     }
 
     /**
+     * @param {string} id
+     * @return {Observable}
+     */
+    public getQuestionById(id: string): Observable<Question> {
+
+        let relations: string[] = ['answers', 'tags', 'user'];
+        let apiUrl: string = this.apiUrlService.baseResourceUrl(RESOURCE_NAME);
+        apiUrl = this.apiUrlService.singleResourceUrl(apiUrl, id);
+        apiUrl = this.apiUrlService.allFields(apiUrl);
+        apiUrl = this.apiUrlService.addRelations(apiUrl, relations);
+
+        return this.httpClient
+            .get(
+                apiUrl,
+                this.httpHeaderService.getHttpOptions()
+            )
+            .map(response => {
+                this.response = response;
+                return new Question(this.questionTransformationService.transformInputs(this.response.data));
+            })
+            .catch(this.handleError);
+    }
+
+    /**
      * @param {Question} question
      * @return {Observable}
      */
@@ -150,21 +172,7 @@ export class QuestionApiService {
     //         .catch(this.handleError);
     // }
 
-    /**
-     * @param {string} questionId
-     * @return {Observable}
-     */
-    // public getQuestionById(questionId: string): Observable<Question> {
-    //     return this.httpClient
-    //         .get(
-    //             this.apiUrlService.getSingleResourceUrl(RESOURCE_NAME, questionId),
-    //             this.httpHeaderService.getHttpOptions()
-    //         )
-    //         .map(response => {
-    //             return new Question(response);
-    //         })
-    //         .catch(this.handleError);
-    // }
+
 
     /**
      * @param {Question} question
