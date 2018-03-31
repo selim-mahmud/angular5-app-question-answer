@@ -1,6 +1,7 @@
 <mat-spinner *ngIf="loadingSpinnerQuestion"></mat-spinner>
 
 <div *ngIf="question">
+    <h3>Question:</h3>
     <div class="single-question" *ngIf="question.user.questions">
 
         <div fxLayout="row" fxLayout.xs="column" class="content">
@@ -50,6 +51,7 @@
                         <p>{{answer.description}}</p>
                     </div>
                 </div>
+                <br />
             </div>
         </div>
     </div>

@@ -65,6 +65,26 @@ export class UserApiService {
     }
 
     /**
+     * @param {object} loginDetails
+     * @return {Observable}
+     */
+    public getLoginResponse(loginDetails: object): Observable<any> {
+
+        let apiUrl: string = this.apiUrlService.baseResourceUrl(RESOURCE_NAME);
+
+        return this.httpClient
+            .post(
+                apiUrl + '/login',
+                loginDetails,
+                this.httpHeaderService.getHttpOptions()
+            )
+            .map(response => {
+                return response;
+            })
+            .catch(this.handleError);
+    }
+
+    /**
      * @param {string} apiUrl
      * @return {Observable}
      */
