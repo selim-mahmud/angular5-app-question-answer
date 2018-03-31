@@ -33,6 +33,12 @@ import { FeaturedComponent } from './components/questions/featured/featured.comp
 import { PopularComponent } from './components/questions/popular/popular.component';
 import { UnansweredComponent } from './components/questions/unanswered/unanswered.component';
 import { QuestionComponent } from './components/questions/question/question.component';
+import {AnswerDataService} from "./services/answer/answer-data.service";
+import {TagDataService} from "./services/tag/tag-data.service";
+import {UserDataService} from "./services/user/user-data.service";
+import {AnswerApiService} from "./services/answer/answer-api.service";
+import {TagApiService} from "./services/tag/tag-api.service";
+import {UserApiService} from "./services/user/user-api.service";
 
 @NgModule({
     declarations: [
@@ -63,15 +69,21 @@ import { QuestionComponent } from './components/questions/question/question.comp
         HttpClientModule,
     ],
     providers: [
-        QuestionDataService,
         HttpHeaderService,
-        QuestionApiService,
         ApiUrlService,
+        AppUrlService,
+        QuestionDataService,
+        AnswerDataService,
+        TagDataService,
+        UserDataService,
+        QuestionApiService,
+        AnswerApiService,
+        TagApiService,
+        UserApiService,
         QuestionTransformerService,
         AnswerTransformerService,
         TagTransformerService,
         UserTransformerService,
-        AppUrlService,
         PaginationMetaTransformationService
     ],
     bootstrap: [AppComponent]

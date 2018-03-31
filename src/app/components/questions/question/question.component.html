@@ -1,10 +1,11 @@
-<mat-spinner *ngIf="loadingSpinner"></mat-spinner>
+<mat-spinner *ngIf="loadingSpinnerQuestion"></mat-spinner>
 
 <div *ngIf="question">
-    <div class="single-question" *ngIf="question">
+    <div class="single-question" *ngIf="question.user.questions">
 
         <div fxLayout="row" fxLayout.xs="column" class="content">
             <div fxFlex="15" fxFlex.sm="20" class="left">
+                <p>Qs:{{ question.user.questions.length }} As:{{ question.user.answers.length }}</p>
                 <div class="left-box">
                     <p><a routerLink="/users/{{question.slug}}-{{question.id}}">{{question.user.name}}</a></p>
                 </div>
@@ -27,20 +28,22 @@
     </div>
 
     <h3>Answers:</h3>
+    <mat-spinner *ngIf="loadingSpinnerAnswer"></mat-spinner>
     <p *ngIf="question.answers.length == 0">No answer found.</p>
     <div *ngIf="question.answers.length > 0">
         <div class="single-question">
             <div *ngFor="let answer of question.answers">
-                <div fxLayout="row" fxLayout.xs="column" class="content">
+                <div *ngIf="answer.user" fxLayout="row" fxLayout.xs="column" class="content">
                     <div fxFlex="15" fxFlex.sm="20" class="left">
+                        <p>Qs:{{ answer.user.questions.length }} As:{{ answer.user.answers.length }}</p>
                         <div class="left-box">
-                            <p><a routerLink="/users/{{question.user.id}}">{{answer.userId}}</a></p>
+                            <p><a routerLink="/users/{{question.user.id}}">{{answer.user.name}}</a></p>
                         </div>
                         <div class="vote">
                             <span>{{answer.upVote}} <mat-icon color="primary" class="thumb-up">thumb_up</mat-icon></span>
                             <span>{{answer.downVote}} <mat-icon color="accent" class="thumb-down">thumb_down</mat-icon></span>
                         </div>
-                        <p class="date">{{question.getCreatedAt()}}</p>
+                        <p class="date">{{answer.getCreatedAt()}}</p>
                     </div>
                     <div fxFlex="85" fxFlex.sm="80" class="right">
                         <br />

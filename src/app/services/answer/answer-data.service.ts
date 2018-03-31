@@ -9,11 +9,11 @@ export class AnswerDataService {
     constructor(private answerApiService: AnswerApiService) {
     }
 
-    getAllQuestions() {
+    getAllAnswers() {
         return this.answerApiService.getAllAnswers();
     }
 
-    getQuestionById(id: string): Observable<Answer> {
+    getAnswerById(id: string): Observable<Answer> {
         return this.answerApiService.getAnswerById(id);
     }
 

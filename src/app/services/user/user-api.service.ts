@@ -46,7 +46,7 @@ export class UserApiService {
      */
     public getUserById(id: string): Observable<User> {
 
-        let relations: string[] = ['answers', 'question'];
+        let relations: string[] = ['answers', 'questions'];
         let apiUrl: string = this.apiUrlService.baseResourceUrl(RESOURCE_NAME);
         apiUrl = this.apiUrlService.singleResourceUrl(apiUrl, id);
         apiUrl = this.apiUrlService.allFields(apiUrl);
