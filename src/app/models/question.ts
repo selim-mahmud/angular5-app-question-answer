@@ -1,5 +1,7 @@
 import {Injectable} from '@angular/core';
 import * as moment from 'moment';
+import {Answer} from "./answer";
+import {AnswerTransformerService} from "../services/transformers/answer-transformer.service";
 
 @Injectable()
 export class Question {
@@ -19,11 +21,21 @@ export class Question {
     tags = [];
     user = {'name': null, 'id': null, 'email': null};
 
-    constructor(values: Object = {}) {
+    constructor(
+        values: Object = {}
+    ) {
         Object.assign(this, values);
+        this.getAnswers();
     }
 
-    getCreatedAt(){
+    getCreatedAt() {
         return moment(this.createdAt.date, 'YYYY-MM-DD').format('Do MMM, YYYY');
+    }
+
+    getAnswers() {
+        const answerTransformationService = new AnswerTransformerService();
+        this.answers = this.answers.map(
+            (answer) => new Answer(answerTransformationService.transformInputs(answer))
+        );
     }
 }

@@ -34,11 +34,11 @@
                 <div fxLayout="row" fxLayout.xs="column" class="content">
                     <div fxFlex="15" fxFlex.sm="20" class="left">
                         <div class="left-box">
-                            <p><a routerLink="/users/{{question.user.id}}">{{answer.user_id}}</a></p>
+                            <p><a routerLink="/users/{{question.user.id}}">{{answer.userId}}</a></p>
                         </div>
                         <div class="vote">
-                            <span>{{answer.up_vote}} <mat-icon color="primary" class="thumb-up">thumb_up</mat-icon></span>
-                            <span>{{answer.down_vote}} <mat-icon color="accent" class="thumb-down">thumb_down</mat-icon></span>
+                            <span>{{answer.upVote}} <mat-icon color="primary" class="thumb-up">thumb_up</mat-icon></span>
+                            <span>{{answer.downVote}} <mat-icon color="accent" class="thumb-down">thumb_down</mat-icon></span>
                         </div>
                         <p class="date">{{question.getCreatedAt()}}</p>
                     </div>
