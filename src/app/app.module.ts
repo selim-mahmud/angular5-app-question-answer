@@ -2,8 +2,6 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './components/header/header.component';
-import { FooterComponent } from './components/footer/footer.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { QuestionsComponent } from './components/questions/questions.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -39,12 +37,11 @@ import {UserDataService} from "./services/user/user-data.service";
 import {AnswerApiService} from "./services/answer/answer-api.service";
 import {TagApiService} from "./services/tag/tag-api.service";
 import {UserApiService} from "./services/user/user-api.service";
+import { AuthService } from './services/auth.service';
 
 @NgModule({
     declarations: [
         AppComponent,
-        HeaderComponent,
-        FooterComponent,
         HomePageComponent,
         QuestionsComponent,
         TagsComponent,
@@ -84,7 +81,8 @@ import {UserApiService} from "./services/user/user-api.service";
         AnswerTransformerService,
         TagTransformerService,
         UserTransformerService,
-        PaginationMetaTransformationService
+        PaginationMetaTransformationService,
+        AuthService
     ],
     bootstrap: [AppComponent]
 })

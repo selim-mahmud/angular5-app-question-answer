@@ -6,8 +6,9 @@
             <a (click)="sidenav.toggle()" routerLinkActive="active" mat-list-item routerLink="/questions">Questions</a>
             <a (click)="sidenav.toggle()" routerLinkActive="active" mat-list-item routerLink="/tags">Tags</a>
             <a (click)="sidenav.toggle()" routerLinkActive="active" mat-list-item routerLink="/users">Users</a>
-            <a (click)="sidenav.toggle()" routerLinkActive="active" mat-list-item routerLink="/register">Register</a>
-            <a (click)="sidenav.toggle()" routerLinkActive="active" mat-list-item routerLink="/login">Login</a>
+            <a *ngIf="!isAuth" (click)="sidenav.toggle()" routerLinkActive="active" mat-list-item routerLink="/register">Register</a>
+            <a *ngIf="!isAuth" (click)="sidenav.toggle()" routerLinkActive="active" mat-list-item routerLink="/login">Login</a>
+            <a *ngIf="isAuth" (click)="sidenav.toggle(); onLogout()" style="cursor: pointer" mat-list-item>Logout</a>
         </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
@@ -25,8 +26,9 @@
                     <li routerLinkActive="active"><a routerLink="/questions">Questions</a></li>
                     <li routerLinkActive="active"><a routerLink="/tags">Tags</a></li>
                     <li routerLinkActive="active"><a routerLink="/users">Users</a></li>
-                    <li routerLinkActive="active"><a routerLink="/register">Register</a></li>
-                    <li routerLinkActive="active"><a routerLink="/login">Login</a></li>
+                    <li *ngIf="!isAuth" routerLinkActive="active"><a routerLink="/register">Register</a></li>
+                    <li *ngIf="!isAuth" routerLinkActive="active"><a routerLink="/login">Login</a></li>
+                    <li *ngIf="isAuth" (click)="onLogout()" style="cursor: pointer"><a>Logout</a></li>
                 </ul>
             </div>
         </mat-toolbar>

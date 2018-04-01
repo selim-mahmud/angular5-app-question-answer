@@ -12,6 +12,7 @@ import {FeaturedComponent} from "./components/questions/featured/featured.compon
 import {PopularComponent} from "./components/questions/popular/popular.component";
 import {UnansweredComponent} from "./components/questions/unanswered/unanswered.component";
 import {QuestionComponent} from "./components/questions/question/question.component";
+import {AuthGuard} from "./auth.guard";
 
 const routes: Routes = [
     {path: '', component: HomePageComponent},
@@ -22,7 +23,7 @@ const routes: Routes = [
     {path: 'questions/unanswered', component: UnansweredComponent},
     {path: 'questions/:id', component: QuestionComponent},
     {path: 'tags', component: TagsComponent},
-    {path: 'users', component: UsersComponent},
+    {path: 'users', component: UsersComponent, canActivate: [AuthGuard]},
     {path: 'register', component: RegisterComponent},
     {path: 'login', component: LoginComponent},
 ]
@@ -31,7 +32,8 @@ const routes: Routes = [
     imports: [
         RouterModule.forRoot(routes)
     ],
-    exports: [RouterModule]
+    exports: [RouterModule],
+    providers: [AuthGuard]
 
 })
 export class AppRoutingModule{}

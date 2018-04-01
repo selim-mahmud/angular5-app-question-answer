@@ -24,6 +24,7 @@ export class LoginComponent implements OnInit {
 
         this.userDataService.getLoginResponse(loginDetail).subscribe(response => {
             console.log(response);
+            this.loginForm.reset();
         });
 
     }
@@ -32,7 +33,7 @@ export class LoginComponent implements OnInit {
         this.loginForm = new FormGroup({
             'email': new FormControl(null, [
                 Validators.required,
-                Validators.pattern("[^ @]*@[^ @]*")
+                Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")
             ]),
             'password': new FormControl(null, [
                 Validators.required,
