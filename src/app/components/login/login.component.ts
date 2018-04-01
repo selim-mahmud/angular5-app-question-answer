@@ -1,17 +1,23 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {UserDataService} from "../../services/user/user-data.service";
+import {AuthService} from "../../services/auth.service";
+import {User} from "../../models/user";
+import {Subscription} from "rxjs/Subscription";
 
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
 
     loginForm: FormGroup;
+    invalidAuth = false;
+    loadingSpinner = false;
+    loginSubscription: Subscription;
 
-    constructor(private userDataService: UserDataService) {
+    constructor(private userDataService: UserDataService, private authService: AuthService) {
     }
 
     ngOnInit() {
@@ -19,14 +25,24 @@ export class LoginComponent implements OnInit {
     }
 
     onSubmit(){
-
+        this.loadingSpinner = true;
         let loginDetail: Object = {email : this.loginForm.value.email, password: this.loginForm.value.password};
 
-        this.userDataService.getLoginResponse(loginDetail).subscribe(response => {
-            console.log(response);
-            this.loginForm.reset();
+        this.loginSubscription = this.userDataService.getLoginResponse(loginDetail).subscribe(response => {
+
+            if (typeof response.data.status !== 'undefined') {
+                this.invalidAuth = true;
+            }else{
+                let user = new User(response.data);
+                this.authService.login(user);
+            }
+            this.loadingSpinner = false;
         });
 
+    }
+
+    onInputFocus(){
+        this.invalidAuth = false;
     }
 
     validateForm() {
@@ -41,6 +57,10 @@ export class LoginComponent implements OnInit {
                 Validators.minLength(5),
             ])
         });
+    }
+
+    ngOnDestroy(){
+        this.loginSubscription.unsubscribe();
     }
 
 }

@@ -4,17 +4,20 @@
         <div fxLayout="column">
 
             <mat-form-field class="example-full-width">
-                <input type="email" name="email" matInput placeholder="Your email" formControlName="email">
+                <input (focus)="onInputFocus()" type="email" name="email" matInput placeholder="Your email" formControlName="email">
                 <mat-error *ngIf="!loginForm.get('email').valid && loginForm.get('email').touched">Please enter a valid email.</mat-error>
             </mat-form-field>
 
             <mat-form-field class="example-full-width">
-                <input type="password" name="password" matInput placeholder="Your password" formControlName="password">
+                <input (focus)="onInputFocus()" type="password" name="password" matInput placeholder="Your password" formControlName="password">
                 <mat-error *ngIf="!loginForm.get('password').valid && loginForm.get('password').touched">Please enter a valid password.</mat-error>
             </mat-form-field>
 
             <br />
-            <button type="submit" [disabled]="!loginForm.valid" mat-raised-button color="primary">Login</button>
+            <button *ngIf="!loadingSpinner" type="submit" [disabled]="!loginForm.valid" mat-raised-button color="primary">Login</button>
+            <mat-spinner *ngIf="loadingSpinner"></mat-spinner>
+            <br />
+            <p *ngIf="invalidAuth" class="errorMessage">Invalid email or password.</p>
         </div>
 
     </form>
