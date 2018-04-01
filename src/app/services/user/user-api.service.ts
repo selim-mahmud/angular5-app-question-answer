@@ -85,6 +85,25 @@ export class UserApiService {
     }
 
     /**
+     * @param {object} inputs
+     * @return {Observable}
+     */
+    public getRegisterResponse(inputs: object): Observable<any> {
+
+        let apiUrl: string = this.apiUrlService.baseResourceUrl(RESOURCE_NAME);
+        return this.httpClient
+            .post(
+                apiUrl,
+                inputs,
+                this.httpHeaderService.getHttpOptions()
+            )
+            .map(response => {
+                return response;
+            })
+            .catch(this.handleError);
+    }
+
+    /**
      * @param {string} apiUrl
      * @return {Observable}
      */

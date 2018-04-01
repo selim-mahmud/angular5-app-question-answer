@@ -21,4 +21,8 @@ export class UserDataService {
         return this.userApiService.getLoginResponse(loginDetails);
     }
 
+    getRegisterResponse(inputs: object): Observable<any> {
+        return this.userApiService.getRegisterResponse(inputs);
+    }
+
 }

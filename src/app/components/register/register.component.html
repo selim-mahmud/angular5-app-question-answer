@@ -1,3 +1,46 @@
-<p>
-  register works!
-</p>
+<div style="max-width: 500px; margin: 0 auto;">
+    <h3>Register:</h3>
+    <form [formGroup]="userRegistrationForm" (ngSubmit)="onSubmit()" novalidate>
+
+        <div fxLayout="column">
+            <mat-form-field>
+                <input matInput placeholder="Full name" type="text" formControlName="name">
+                <mat-error>
+                    {{errors.fullName}}
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput placeholder="Email address" type="email" formControlName="email">
+                <mat-error>
+                    {{errors.email}}
+                </mat-error>
+            </mat-form-field>
+
+            <div fxLayout="column" formGroupName="passwordGroup">
+                <mat-form-field>
+                    <input matInput name="password" placeholder="Password" type="password" formControlName="password">
+                    <mat-error>
+                        {{errors.password}}
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input matInput placeholder="Confirm password" type="password" formControlName="password_confirmation"
+                           [errorStateMatcher]="confirmValidParentMatcher">
+                    <mat-error>
+                        {{errors.confirmPassword}}
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <br />
+            <button *ngIf="!loadingSpinner" type="submit" mat-raised-button color="primary" [disabled]="userRegistrationForm.invalid">Register</button>
+            <mat-spinner *ngIf="loadingSpinner"></mat-spinner>
+            <br />
+            <p *ngIf="invalidData" class="errorMessage">Invalid inputs have been provided.</p>
+        </div>
+
+
+
+    </form>
+</div>
