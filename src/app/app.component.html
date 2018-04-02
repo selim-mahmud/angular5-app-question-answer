@@ -39,7 +39,44 @@
                     <router-outlet></router-outlet>
                 </div>
                 <div fxFlex="25">
-                    <h2>This is side bar.</h2>
+                    <p><a mat-raised-button color="accent" routerLink="/questions/create">Ask a question</a></p>
+
+                    <br />
+
+                    <h5>Available tags:</h5>
+                    <mat-spinner *ngIf="tagLoadingSpinner"></mat-spinner>
+                    <div *ngIf="isTags">
+                        <p>No tags founds.</p>
+                    </div>
+
+                    <mat-grid-list fxHide.lt-md="true" cols="3" rowHeight="2:1">
+                        <mat-grid-tile *ngFor="let tag of tags"><a href="/tags/{{tag.id}}/questions">{{tag.name}}</a></mat-grid-tile>
+                    </mat-grid-list>
+
+                    <mat-grid-list fxHide.gt-sm="true" cols="2" rowHeight="2:1">
+                        <mat-grid-tile *ngFor="let tag of tags"><a href="/tags/{{tag.id}}/questions">{{tag.name}}</a></mat-grid-tile>
+                    </mat-grid-list>
+
+                    <br />
+                    <br />
+
+                    <h5>Latest questions:</h5>
+                    <mat-spinner *ngIf="questionLoadingSpinner"></mat-spinner>
+                    <div *ngIf="isQuestions">
+                        <p>No latest questions founds.</p>
+                    </div>
+
+                    <mat-list>
+                        <div *ngFor="let question of questions">
+                            <mat-list-item><a routerLink="/questions/{{question.slug}}-{{question.id}}">{{question.title}}</a></mat-list-item>
+                            <mat-divider></mat-divider>
+                        </div>
+                    </mat-list>
+
+                    <br />
+                    <br />
+                    <br />
+                    <br />
                 </div>
             </div>
         </div>

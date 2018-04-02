@@ -137,3 +137,20 @@ mat-spinner{
     color: $white-base;
   }
 }
+
+mat-grid-list{
+  mat-grid-tile{
+    background-color: $brand-success;
+    a{
+      color: $white-base;
+    }
+  }
+}
+
+mat-list{
+  mat-list-item{
+    .mat-list-item-content{
+      padding: 0 !important;
+    }
+  }
+}

@@ -49,3 +49,20 @@ ul.navigation-items{
   }
 }
 
+mat-grid-list{
+  mat-grid-tile{
+    a{
+      font-size: $font-size-small;
+    }
+  }
+}
+
+mat-list{
+  mat-list-item{
+    a{
+      font-size: $font-size-very-small;
+    }
+  }
+}
+
+
