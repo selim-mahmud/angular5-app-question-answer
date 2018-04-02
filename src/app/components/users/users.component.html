@@ -1,3 +1,23 @@
-<p>
-  users works!
-</p>
+<h3>Available users:</h3>
+<mat-spinner *ngIf="loadingSpinner"></mat-spinner>
+<div *ngIf="isRecords">
+    <p>No users founds.</p>
+</div>
+
+<mat-grid-list fxHide.xs="true" cols="4" rowHeight="2:1">
+    <mat-grid-tile *ngFor="let user of users">
+        <div>
+            <p><strong>Qs:</strong>{{user.questions.length}} <strong>As:</strong>{{user.answers.length}}</p>
+            <a routerLink="/users/{{user.id}}/questions">{{user.name}}</a>
+        </div>
+    </mat-grid-tile>
+</mat-grid-list>
+
+<mat-grid-list fxHide.gt-xs="true" cols="2" rowHeight="2:1">
+    <mat-grid-tile *ngFor="let user of users">
+        <div>
+            <p><strong>Qs:</strong>{{user.questions.length}} <strong>As:</strong>{{user.answers.length}}</p>
+            <a routerLink="/users/{{user.id}}/questions">{{user.name}}</a>
+        </div>
+    </mat-grid-tile>
+</mat-grid-list>

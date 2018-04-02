@@ -17,6 +17,10 @@ export class UserDataService {
         return this.userApiService.getUserById(id);
     }
 
+    getQuestionsByUserId(id: string) {
+        return this.userApiService.getQuestionsByUserId(id);
+    }
+
     getLoginResponse(loginDetails: object): Observable<any> {
         return this.userApiService.getLoginResponse(loginDetails);
     }

@@ -4,6 +4,7 @@ import {RouterModule, Routes} from "@angular/router";
 import {HomePageComponent} from "./components/home-page/home-page.component";
 import {QuestionsComponent} from "./components/questions/questions.component";
 import {QuestionsComponent as TagQuestionsComponent} from "./components/tags/questions/questions.component";
+import {UserQuestionsComponent} from "./components/users/user-questions/user-questions.component";
 import {TagsComponent} from "./components/tags/tags.component";
 import {UsersComponent} from "./components/users/users.component";
 import {RegisterComponent} from "./components/register/register.component";
@@ -26,6 +27,7 @@ const routes: Routes = [
     {path: 'tags', component: TagsComponent},
     {path: 'tags/:id/questions', component: TagQuestionsComponent},
     {path: 'users', component: UsersComponent, canActivate: [AuthGuard]},
+    {path: 'users/:id/questions', component: UserQuestionsComponent},
     {path: 'register', component: RegisterComponent},
     {path: 'login', component: LoginComponent},
 ]

@@ -8,7 +8,7 @@
             <div fxFlex="15" fxFlex.sm="20" class="left">
                 <p>Qs:{{ question.user.questions.length }} As:{{ question.user.answers.length }}</p>
                 <div class="left-box">
-                    <p><a routerLink="/users/{{question.slug}}-{{question.id}}">{{question.user.name}}</a></p>
+                    <p><a routerLink="/users/{{question.user.id}}/questions">{{question.user.name}}</a></p>
                 </div>
                 <div class="vote">
                     <span>{{question.upVote}} <mat-icon color="primary" class="thumb-up">thumb_up</mat-icon></span>
@@ -38,7 +38,7 @@
                     <div fxFlex="15" fxFlex.sm="20" class="left">
                         <p>Qs:{{ answer.user.questions.length }} As:{{ answer.user.answers.length }}</p>
                         <div class="left-box">
-                            <p><a routerLink="/users/{{question.user.id}}">{{answer.user.name}}</a></p>
+                            <p><a routerLink="/users/{{answer.user.id}}/questions">{{answer.user.name}}</a></p>
                         </div>
                         <div class="vote">
                             <span>{{answer.upVote}} <mat-icon color="primary" class="thumb-up">thumb_up</mat-icon></span>
