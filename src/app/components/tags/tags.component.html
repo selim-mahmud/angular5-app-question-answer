@@ -6,9 +6,9 @@
 </div>
 
 <mat-grid-list fxHide.xs="true" cols="4" rowHeight="2:1">
-    <mat-grid-tile *ngFor="let tag of tags"><a href="/tags/{{tag.id}}/questions">{{tag.name}}</a></mat-grid-tile>
+    <mat-grid-tile *ngFor="let tag of tags"><a routerLink="/tags/{{tag.id}}/questions">{{tag.name}}</a></mat-grid-tile>
 </mat-grid-list>
 
 <mat-grid-list fxHide.gt-xs="true" cols="2" rowHeight="2:1">
-    <mat-grid-tile *ngFor="let tag of tags"><a href="/tags/{{tag.id}}/questions">{{tag.name}}</a></mat-grid-tile>
+    <mat-grid-tile *ngFor="let tag of tags"><a routerLink="/tags/{{tag.id}}/questions">{{tag.name}}</a></mat-grid-tile>
 </mat-grid-list>

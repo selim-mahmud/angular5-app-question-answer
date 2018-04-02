@@ -50,11 +50,11 @@
                     </div>
 
                     <mat-grid-list fxHide.lt-md="true" cols="3" rowHeight="2:1">
-                        <mat-grid-tile *ngFor="let tag of tags"><a href="/tags/{{tag.id}}/questions">{{tag.name}}</a></mat-grid-tile>
+                        <mat-grid-tile *ngFor="let tag of tags"><a  routerLink="/tags/{{tag.id}}/questions">{{tag.name}}</a></mat-grid-tile>
                     </mat-grid-list>
 
                     <mat-grid-list fxHide.gt-sm="true" cols="2" rowHeight="2:1">
-                        <mat-grid-tile *ngFor="let tag of tags"><a href="/tags/{{tag.id}}/questions">{{tag.name}}</a></mat-grid-tile>
+                        <mat-grid-tile *ngFor="let tag of tags"><a routerLink="/tags/{{tag.id}}/questions">{{tag.name}}</a></mat-grid-tile>
                     </mat-grid-list>
 
                     <br />

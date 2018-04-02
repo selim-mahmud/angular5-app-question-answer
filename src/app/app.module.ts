@@ -38,6 +38,7 @@ import {AnswerApiService} from "./services/answer/answer-api.service";
 import {TagApiService} from "./services/tag/tag-api.service";
 import {UserApiService} from "./services/user/user-api.service";
 import { AuthService } from './services/auth.service';
+import {QuestionsComponent as TagQuestionsComponent} from "./components/tags/questions/questions.component";
 
 @NgModule({
     declarations: [
@@ -54,6 +55,7 @@ import { AuthService } from './services/auth.service';
         PopularComponent,
         UnansweredComponent,
         QuestionComponent,
+        TagQuestionsComponent,
     ],
     imports: [
         AppConfigModule,

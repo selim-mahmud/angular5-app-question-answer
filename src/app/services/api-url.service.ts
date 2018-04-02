@@ -34,6 +34,15 @@ export class ApiUrlService {
 
     /**
      * @param {string} resourceUrl
+     * @param {string} relation
+     * @return {string}
+     */
+    relatedResourceUrl(resourceUrl: string, relation: string, ): string {
+        return resourceUrl + '/' + relation;
+    }
+
+    /**
+     * @param {string} resourceUrl
      * @return {string}
      */
     allFields(resourceUrl: string): string {

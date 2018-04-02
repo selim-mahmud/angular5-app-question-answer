@@ -3,6 +3,7 @@ import {NgModule} from "@angular/core";
 import {RouterModule, Routes} from "@angular/router";
 import {HomePageComponent} from "./components/home-page/home-page.component";
 import {QuestionsComponent} from "./components/questions/questions.component";
+import {QuestionsComponent as TagQuestionsComponent} from "./components/tags/questions/questions.component";
 import {TagsComponent} from "./components/tags/tags.component";
 import {UsersComponent} from "./components/users/users.component";
 import {RegisterComponent} from "./components/register/register.component";
@@ -23,6 +24,7 @@ const routes: Routes = [
     {path: 'questions/unanswered', component: UnansweredComponent},
     {path: 'questions/:id', component: QuestionComponent},
     {path: 'tags', component: TagsComponent},
+    {path: 'tags/:id/questions', component: TagQuestionsComponent},
     {path: 'users', component: UsersComponent, canActivate: [AuthGuard]},
     {path: 'register', component: RegisterComponent},
     {path: 'login', component: LoginComponent},

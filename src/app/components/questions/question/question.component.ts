@@ -24,11 +24,10 @@ export class QuestionComponent implements OnInit {
     }
 
     ngOnInit() {
-            this.route.params.subscribe( params => {
-                const id: string = params['id'].substr(params['id'].lastIndexOf('-')+1);
-                this.getQuestion(id);
-            }
-        );
+        this.route.params.subscribe( params => {
+            const id: string = params['id'].substr(params['id'].lastIndexOf('-')+1);
+            this.getQuestion(id);
+        });
     }
 
     getQuestion(id: string): void {
