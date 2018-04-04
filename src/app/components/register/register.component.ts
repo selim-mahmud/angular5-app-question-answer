@@ -21,9 +21,10 @@ export class RegisterComponent implements OnInit {
     confirmValidParentMatcher = new ConfirmValidParentMatcher();
     errors = errorMessages;
 
-    constructor(private formBuilder: FormBuilder,
-                private userDataService: UserDataService,
-                private router: Router
+    constructor(
+        private formBuilder: FormBuilder,
+        private userDataService: UserDataService,
+        private router: Router
     ) {
     }
 

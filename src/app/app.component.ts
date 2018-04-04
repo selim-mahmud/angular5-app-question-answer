@@ -38,6 +38,7 @@ export class AppComponent implements OnInit, OnDestroy {
     ngOnInit() {
         this.titleService.setTitle(AppComponent.title);
 
+        this.isAuth = this.authService.isAuth();
         this.authSubscription = this.authService.authChange.subscribe(authStatus => {
             this.isAuth = authStatus;
         });

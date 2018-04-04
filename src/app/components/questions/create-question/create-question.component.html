@@ -1,48 +1,29 @@
-<div style="max-width: 600px; margin: 0 auto;">
-    <form class="form-horizontal" [formGroup]="questionForm" (ngSubmit)="onSubmit()">
-        <div class="form-group">
-            <label for="title" class="col-sm-3 control-label">Title:</label>
-            <div class="col-sm-9">
-                <input
-                    type="text"
-                    class="form-control"
-                    name="title"
-                    id="title"
-                    placeholder="Title"
-                    formControlName="title">
-                <p *ngIf="!questionForm.get('title').valid && questionForm.get('title').touched"
-                class="errorMessage">Please enter a valid title.</p>
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="description" class="col-sm-3 control-label">Description: </label>
-            <div class="col-sm-9">
-                <textarea
-                    name="description"
-                    id="description"
-                    class="form-control"
-                    rows="6"
-                    placeholder="Describe"
-                    formControlName="description">></textarea>
-                <p *ngIf="!questionForm.get('description').valid && questionForm.get('description').touched"
-                      class="errorMessage">Please enter a valid description.</p>
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="tags" class="col-sm-3 control-label">Tags: </label>
-            <div class="col-sm-9">
-                <select id="tags" name="tags[]" class="form-control" multiple>
-                    <option value="PHP">PHP</option>
-                    <option value="Javascript">Javascript</option>
-                    <option value="Angular">Angular</option>
-                    <option value="Laravel">Laravel</option>
-                </select>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-offset-3 col-sm-9">
-                <button type="submit" [disabled]="!questionForm.valid"  class="btn btn-primary">Create</button>
-            </div>
+<div style="max-width: 500px; margin: 0 auto;">
+    <h3>Ask a question:</h3>
+    <form [formGroup]="askQuestionForm" (ngSubmit)="onSubmit()" novalidate>
+        <div fxLayout="column">
+            <mat-form-field>
+                <input matInput placeholder="question title" type="text" formControlName="title">
+                <mat-error *ngIf="!askQuestionForm.get('title').valid && askQuestionForm.get('title').touched">Please enter a valid title.</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <textarea matInput placeholder="Description" formControlName="description" cols="30" rows="10"></textarea>
+                <mat-error *ngIf="!askQuestionForm.get('description').valid && askQuestionForm.get('description').touched">Please enter a valid description.</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-select matInput placeholder="Select tags" formControlName="tags" multiple>
+                    <mat-option *ngFor="let tag of tagsList" [value]="tag.id">{{tag.name}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="!askQuestionForm.get('tags').valid && askQuestionForm.get('tags').touched">Please select valid tags.</mat-error>
+            </mat-form-field>
+
+            <br />
+            <button *ngIf="!loadingSpinner" type="submit" mat-raised-button color="primary" [disabled]="askQuestionForm.invalid">Ask</button>
+            <mat-spinner *ngIf="loadingSpinner"></mat-spinner>
+            <br />
+            <p *ngIf="invalidData" class="errorMessage">Invalid inputs have been provided.</p>
         </div>
     </form>
 </div>

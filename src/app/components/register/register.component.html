@@ -6,7 +6,7 @@
             <mat-form-field>
                 <input matInput placeholder="Full name" type="text" formControlName="name">
                 <mat-error>
-                    {{errors.fullName}}
+                    {{errors.name}}
                 </mat-error>
             </mat-form-field>
 
@@ -39,8 +39,5 @@
             <br />
             <p *ngIf="invalidData" class="errorMessage">Invalid inputs have been provided.</p>
         </div>
-
-
-
     </form>
 </div>

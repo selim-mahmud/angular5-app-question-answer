@@ -13,23 +13,24 @@ export class AuthService {
     }
 
     login(user: User){
-        this.user = user;
+        localStorage.setItem('user', JSON.stringify(user));
         this.authChange.next(true);
         this.router.navigate(['/questions']);
     }
 
     logout(){
-        this.user = null;
+        localStorage.removeItem('user');
         this.authChange.next(false);
         this.router.navigate(['/login']);
     }
 
     getUser(){
-        return { ...this.user };
+        return localStorage.getItem('user');
     }
 
     isAuth(){
-        return this.user != null;
+        let user = this.getUser();
+        return user != null;
     }
 
 }

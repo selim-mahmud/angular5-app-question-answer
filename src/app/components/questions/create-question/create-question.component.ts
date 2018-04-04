@@ -1,5 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {Tag} from "../../../models/tag";
+import {TagDataService} from "../../../services/tag/tag-data.service";
+import {AuthService} from "../../../services/auth.service";
 
 @Component({
     selector: 'app-create-question',
@@ -8,31 +11,48 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 })
 export class CreateQuestionComponent implements OnInit {
 
-    questionForm: FormGroup;
+    askQuestionForm: FormGroup;
+    tagsList: Tag[];
+    loadingSpinner = true;
+    invalidData = false;
 
-    constructor() {
+    constructor(
+        private tagDataService: TagDataService,
+        private authService: AuthService
+    ) {
     }
-
     ngOnInit() {
-        this.validateForm();
+        this.getTags();
+        this.createForm();
     }
 
     onSubmit(){
-        console.log(this.questionForm);
+        console.log(this.askQuestionForm.value);
+        //let question: Object = {email : this.loginForm.value.email, password: this.loginForm.value.password};
     }
 
-    validateForm(){
-        this.questionForm = new FormGroup({
-            'title': new FormControl(null, [
+    createForm() {
+        this.askQuestionForm = new FormGroup({
+            'title': new FormControl('', [
                 Validators.required,
-                Validators.maxLength(255),
                 Validators.minLength(10),
+                Validators.maxLength(255)
             ]),
-            'description': new FormControl(null, [
+            'description': new FormControl('', [
                 Validators.required,
-                Validators.maxLength(65000),
-                Validators.minLength(20),
+                Validators.minLength(10),
+                Validators.maxLength(65535)
+            ]),
+            'tags': new FormControl('', [
+                Validators.required,
             ])
+        });
+    }
+
+    getTags(): void {
+        this.tagDataService.getAllTags().subscribe(response => {
+            this.tagsList = response.tags;
+            this.loadingSpinner = false;
         });
     }
 

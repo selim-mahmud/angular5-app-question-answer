@@ -3,12 +3,12 @@
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <div fxLayout="column">
 
-            <mat-form-field class="example-full-width">
+            <mat-form-field>
                 <input (focus)="onInputFocus()" type="email" name="email" matInput placeholder="Your email" formControlName="email">
                 <mat-error *ngIf="!loginForm.get('email').valid && loginForm.get('email').touched">Please enter a valid email.</mat-error>
             </mat-form-field>
 
-            <mat-form-field class="example-full-width">
+            <mat-form-field>
                 <input (focus)="onInputFocus()" type="password" name="password" matInput placeholder="Your password" formControlName="password">
                 <mat-error *ngIf="!loginForm.get('password').valid && loginForm.get('password').touched">Please enter a valid password.</mat-error>
             </mat-form-field>
