@@ -2,6 +2,8 @@
     <h3>Ask a question:</h3>
     <form [formGroup]="askQuestionForm" (ngSubmit)="onSubmit()" novalidate>
         <div fxLayout="column">
+            <input type="hidden" name="userId" value="{{userId}}">
+
             <mat-form-field>
                 <input matInput placeholder="question title" type="text" formControlName="title">
                 <mat-error *ngIf="!askQuestionForm.get('title').valid && askQuestionForm.get('title').touched">Please enter a valid title.</mat-error>

@@ -32,6 +32,10 @@ export class QuestionDataService {
         return this.questionApiService.getQuestionById(id);
     }
 
+    createQuestion(inputs: Object): Observable<any> {
+        return this.questionApiService.createQuestion(inputs);
+    }
+
     // addQuestion(question: Question): Observable<Question> {
     //     return this.questionApiService.createQuestion(question);
     // }

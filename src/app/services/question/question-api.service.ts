@@ -155,22 +155,22 @@ export class QuestionApiService {
     }
 
     /**
-     * @param {Question} question
+     * @param {Object} inputs
      * @return {Observable}
      */
-    // public createQuestion(question: Question): Observable<Question> {
-    //
-    //     return this.httpClient
-    //         .post(
-    //             this.apiUrlService.getCreateResourceUrl(RESOURCE_NAME),
-    //             question,
-    //             this.httpHeaderService.getHttpOptions()
-    //         )
-    //         .map(response => {
-    //             return new Question(response);
-    //         })
-    //         .catch(this.handleError);
-    // }
+    public createQuestion(inputs: Object): Observable<any> {
+
+        return this.httpClient
+            .post(
+                this.apiUrlService.baseResourceUrl(RESOURCE_NAME),
+                inputs,
+                this.httpHeaderService.getHttpOptions()
+            )
+            .map(response => {
+                return new Question(response);
+            })
+            .catch(this.handleError);
+    }
 
 
 
