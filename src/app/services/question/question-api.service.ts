@@ -167,7 +167,7 @@ export class QuestionApiService {
                 this.httpHeaderService.getHttpOptions()
             )
             .map(response => {
-                return new Question(response);
+                return response;
             })
             .catch(this.handleError);
     }

@@ -1,0 +1,24 @@
+<div style="max-width: 700px;">
+    <form [formGroup]="answerForm" (ngSubmit)="onSubmit()" novalidate>
+        <div fxLayout="column">
+            <input type="hidden" name="userId" value="{{userId}}" />
+            <input type="hidden" name="qestionId" value="{{questionId}}" />
+
+            <mat-form-field>
+                <textarea matInput placeholder="Description" formControlName="description" cols="30"
+                          rows="10"></textarea>
+                <mat-error *ngIf="!answerForm.get('description').valid && answerForm.get('description').touched">Please
+                    enter a valid description.
+                </mat-error>
+            </mat-form-field>
+
+            <br/>
+            <button *ngIf="!loadingSpinner" type="submit" mat-raised-button color="primary"
+                    [disabled]="answerForm.invalid">Answer
+            </button>
+            <mat-spinner *ngIf="loadingSpinner"></mat-spinner>
+            <br/>
+            <p *ngIf="invalidData" class="errorMessage">Invalid inputs have been provided.</p>
+        </div>
+    </form>
+</div>

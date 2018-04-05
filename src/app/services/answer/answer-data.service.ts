@@ -17,4 +17,8 @@ export class AnswerDataService {
         return this.answerApiService.getAnswerById(id);
     }
 
+    createAnswer(inputs: Object): Observable<any> {
+        return this.answerApiService.createAnswer(inputs);
+    }
+
 }

@@ -55,6 +55,14 @@
             </div>
         </div>
     </div>
+
+    <br />
+    <br />
+
+    <h3 *ngIf="question.answers.length === 0">Be the first to answer this question:</h3>
+    <h3 *ngIf="question.answers.length > 0">Answer this question:</h3>
+    <app-create-answer *ngIf="isAuthenticated" [questionId]="question.id"></app-create-answer>
+    <p *ngIf="!isAuthenticated">Please login <a routerLink="/login">here</a> to answer.</p>
 </div>
 
 

@@ -65,6 +65,24 @@ export class AnswerApiService {
     }
 
     /**
+     * @param {Object} inputs
+     * @return {Observable}
+     */
+    public createAnswer(inputs: Object): Observable<any> {
+
+        return this.httpClient
+            .post(
+                this.apiUrlService.baseResourceUrl(RESOURCE_NAME),
+                inputs,
+                this.httpHeaderService.getHttpOptions()
+            )
+            .map(response => {
+                return response;
+            })
+            .catch(this.handleError);
+    }
+
+    /**
      * @param {string} apiUrl
      * @return {Observable}
      */
