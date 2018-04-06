@@ -42,6 +42,8 @@ import {QuestionsComponent as TagQuestionsComponent} from "./components/tags/que
 import {UserQuestionsComponent} from "./components/users/user-questions/user-questions.component";
 import { CreateAnswerComponent } from './components/questions/question/create-answer/create-answer.component';
 import { SnackBarServiceService } from './services/snack-bar-service.service';
+import { SingleQuestionComponent } from './components/questions/single-question/single-question.component';
+import { SingleAnswerComponent } from './components/questions/single-answer/single-answer.component';
 
 @NgModule({
     declarations: [
@@ -61,6 +63,8 @@ import { SnackBarServiceService } from './services/snack-bar-service.service';
         UserQuestionsComponent,
         TagQuestionsComponent,
         CreateAnswerComponent,
+        SingleQuestionComponent,
+        SingleAnswerComponent,
     ],
     imports: [
         AppConfigModule,

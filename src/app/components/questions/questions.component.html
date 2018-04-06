@@ -18,26 +18,7 @@
 </div>
 <div>
     <div *ngFor="let question of questions" class="single-question">
-        <div fxLayout="row" fxLayout.xs="column" class="content">
-            <div fxFlex="15" fxFlex.sm="20" class="left">
-                <div class="left-box">
-                    <h4>{{question.answers.length}}</h4>
-                    <p>answers</p>
-                </div>
-                <div class="vote">
-                    <span>{{question.upVote}} <mat-icon color="primary" class="thumb-up">thumb_up</mat-icon></span>
-                    <span>{{question.downVote}} <mat-icon color="accent" class="thumb-down">thumb_down</mat-icon></span>
-                </div>
-                <p class="date">{{question.getCreatedAt()}}</p>
-            </div>
-            <div fxFlex="85" fxFlex.sm="80" class="right">
-                <h4><a routerLink="/questions/{{question.slug}}-{{question.id}}">{{question.title}}</a></h4>
-                <p>{{question.description}}</p>
-                <mat-chip-list>
-                    <mat-chip *ngFor="let tag of question.tags">{{tag.name}}</mat-chip>
-                </mat-chip-list>
-            </div>
-        </div>
+        <app-single-question [question]="question"></app-single-question>
     </div>
 </div>
 <div *ngIf="paginationMeta">

@@ -1,0 +1,18 @@
+<div *ngIf="answer.user" fxLayout="row" fxLayout.xs="column" class="content">
+    <div fxFlex="15" fxFlex.sm="20" class="left">
+        <p>Qs:{{ answer.user.questions.length }} As:{{ answer.user.answers.length }}</p>
+        <div class="left-box">
+            <p><a routerLink="/users/{{answer.user.id}}/questions">{{answer.user.name}}</a></p>
+        </div>
+        <div class="vote">
+            <span>{{answer.upVote}} <mat-icon color="primary" class="thumb-up">thumb_up</mat-icon></span>
+            <span>{{answer.downVote}} <mat-icon color="accent" class="thumb-down">thumb_down</mat-icon></span>
+        </div>
+        <p class="date">{{answer.getCreatedAt()}}</p>
+    </div>
+    <div fxFlex="85" fxFlex.sm="80" class="right">
+        <br/>
+        <p>{{answer.description}}</p>
+    </div>
+</div>
+<br/>
