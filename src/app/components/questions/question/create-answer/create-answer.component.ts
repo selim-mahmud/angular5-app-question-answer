@@ -5,6 +5,7 @@ import {AnswerDataService} from "../../../../services/answer/answer-data.service
 import {Router} from "@angular/router";
 import {Subject} from "rxjs/Subject";
 import {Answer} from "../../../../models/answer";
+import {SnackBarServiceService} from "../../../../services/snack-bar-service.service";
 
 @Component({
     selector: 'app-create-answer',
@@ -25,7 +26,8 @@ export class CreateAnswerComponent implements OnInit {
     constructor(
         private authService: AuthService,
         private answerDataService: AnswerDataService,
-        private router: Router
+        private router: Router,
+        private snackBarService: SnackBarServiceService
     ) {
     }
 
@@ -52,6 +54,7 @@ export class CreateAnswerComponent implements OnInit {
             if(response.data.status === 'success'){
                 //this.answers.next(true);
                 this.answerForm.reset();
+                this.snackBarService.openSnackBar('Your answer has been created successfully.', '');
                 this.router.navigate(['/questions/' + this.questionId]);
             }else{
                 this.invalidData = true;

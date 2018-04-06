@@ -6,6 +6,7 @@ import {
     errorMessages
 } from "../../custom-validator/confirm-equal-validator";
 import {Router} from "@angular/router";
+import {SnackBarServiceService} from "../../services/snack-bar-service.service";
 
 @Component({
     selector: 'app-register',
@@ -24,7 +25,8 @@ export class RegisterComponent implements OnInit {
     constructor(
         private formBuilder: FormBuilder,
         private userDataService: UserDataService,
-        private router: Router
+        private router: Router,
+        private snackBarService: SnackBarServiceService
     ) {
     }
 
@@ -44,6 +46,7 @@ export class RegisterComponent implements OnInit {
         this.userDataService.getRegisterResponse(inputs).subscribe(response => {
 
             if(response.data.status === 'success'){
+                this.snackBarService.openSnackBar('You have been registered successfully. Please login now.', '');
                 this.router.navigate(['/login']);
             }else{
                 this.invalidData = true;

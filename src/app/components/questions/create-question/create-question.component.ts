@@ -5,6 +5,7 @@ import {TagDataService} from "../../../services/tag/tag-data.service";
 import {AuthService} from "../../../services/auth.service";
 import {QuestionDataService} from "../../../services/question/question-data.service";
 import {Router} from "@angular/router";
+import {SnackBarServiceService} from "../../../services/snack-bar-service.service";
 
 @Component({
     selector: 'app-create-question',
@@ -24,7 +25,8 @@ export class CreateQuestionComponent implements OnInit {
         private tagDataService: TagDataService,
         private authService: AuthService,
         private questionDataService: QuestionDataService,
-        private router: Router
+        private router: Router,
+        private snackBarService: SnackBarServiceService
     ) {
     }
     ngOnInit() {
@@ -51,6 +53,7 @@ export class CreateQuestionComponent implements OnInit {
         this.questionDataService.createQuestion(inputs).subscribe(response => {
 
             if(response.data.status === 'success'){
+                this.snackBarService.openSnackBar('Your question has been created successfully.', '');
                 this.router.navigate(['/questions']);
             }else{
                 this.invalidData = true;

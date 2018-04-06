@@ -41,6 +41,7 @@ import { AuthService } from './services/auth.service';
 import {QuestionsComponent as TagQuestionsComponent} from "./components/tags/questions/questions.component";
 import {UserQuestionsComponent} from "./components/users/user-questions/user-questions.component";
 import { CreateAnswerComponent } from './components/questions/question/create-answer/create-answer.component';
+import { SnackBarServiceService } from './services/snack-bar-service.service';
 
 @NgModule({
     declarations: [
@@ -88,7 +89,8 @@ import { CreateAnswerComponent } from './components/questions/question/create-an
         TagTransformerService,
         UserTransformerService,
         PaginationMetaTransformationService,
-        AuthService
+        AuthService,
+        SnackBarServiceService
     ],
     bootstrap: [AppComponent]
 })
