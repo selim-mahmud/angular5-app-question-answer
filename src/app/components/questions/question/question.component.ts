@@ -1,22 +1,24 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, OnDestroy} from '@angular/core';
 import {QuestionDataService} from "../../../services/question/question-data.service";
 import {ActivatedRoute} from "@angular/router";
 import {Question} from "../../../models/question";
 import {UserDataService} from "../../../services/user/user-data.service";
 import {User} from "../../../models/user";
 import {AuthService} from "../../../services/auth.service";
+import {Observable} from "rxjs/Observable";
 
 @Component({
     selector: 'app-question',
     templateUrl: './question.component.html',
     styleUrls: ['./question.component.scss']
 })
-export class QuestionComponent implements OnInit {
+export class QuestionComponent implements OnInit, OnDestroy {
 
     question: Question;
     loadingSpinnerQuestion: boolean = true;
-    loadingSpinnerAnswer: boolean = false;
     isAuthenticated: boolean = false;
+    questionValueChange;
+    answerValueChange;
 
     constructor(
         private questionDataService: QuestionDataService,
@@ -27,8 +29,8 @@ export class QuestionComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.route.params.subscribe( params => {
-            const id: string = params['id'].substr(params['id'].lastIndexOf('-')+1);
+        this.route.params.subscribe(params => {
+            const id: string = params['id'].substr(params['id'].lastIndexOf('-') + 1);
             this.getQuestion(id);
         });
 
@@ -36,28 +38,20 @@ export class QuestionComponent implements OnInit {
     }
 
     getQuestion(id: string): void {
-        this.questionDataService.getQuestionById(id).subscribe(response => {
+        this.questionValueChange = this.questionDataService.getQuestionById(id).subscribe(response => {
 
             this.question = response;
 
             this.userDataService.getUserById(this.question.user.id).subscribe(response => {
                 this.question.user = new User(response);
                 this.loadingSpinnerQuestion = false;
-
-                if(this.question.answers.length > 0){
-                    this.loadingSpinnerAnswer = true;
-                }
             });
-
-            for(let i = 0; i < this.question.answers.length; i++){
-                this.userDataService.getUserById(this.question.answers[i].userId).subscribe(response => {
-                    this.question.answers[i].user = response;
-                    if(i === (this.question.answers.length - 1)){
-                        this.loadingSpinnerAnswer = false;
-                    }
-                });
-            }
         });
+    }
+
+    OnDestroy() {
+        this.questionValueChange.unsubscribe();
+        this.answerValueChange.unsubscribe();
     }
 
 }

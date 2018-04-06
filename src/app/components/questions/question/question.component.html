@@ -29,7 +29,6 @@
     </div>
 
     <h3>Answers:</h3>
-    <mat-spinner *ngIf="loadingSpinnerAnswer"></mat-spinner>
     <p *ngIf="question.answers.length == 0">No answer found.</p>
     <div *ngIf="question.answers.length > 0">
         <div class="single-question">

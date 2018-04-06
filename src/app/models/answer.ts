@@ -2,12 +2,13 @@ import moment = require("moment");
 
 export class Answer {
     id: string;
-    userId: number = 0;
-    questionId: number = 0;
+    userId: string = 0;
+    questionId: string = 0;
     description: string = '';
     excepted: boolean = false;
     upVote: number = 0;
     downVote: number = 0;
+    user = {};
     createdAt = {'date': null, 'timezone_type': null, 'timezone': null};
     updatedAt = {'date': null, 'timezone_type': null, 'timezone': null};
 
