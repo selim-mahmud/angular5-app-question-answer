@@ -26,6 +26,7 @@ export class AuthService {
     logout() {
         localStorage.removeItem('user');
         this.authChange.next(false);
+        this.snackBarService.openSnackBar('You have been logged out successfully', '');
         this.router.navigate(['/login']);
     }
 
