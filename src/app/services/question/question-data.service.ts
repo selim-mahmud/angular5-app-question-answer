@@ -36,14 +36,11 @@ export class QuestionDataService {
         return this.questionApiService.createQuestion(inputs);
     }
 
-    // addQuestion(question: Question): Observable<Question> {
-    //     return this.questionApiService.createQuestion(question);
-    // }
-    //
-    // updateQuestion(question: Question): Observable<Question> {
-    //     return this.questionApiService.updateQuestion(question);
-    // }
-    //
+
+    updateQuestion(inputs: Object, id: string): Observable<any> {
+        return this.questionApiService.updateQuestion(inputs, id);
+    }
+
     // deleteQuestionById(questionId: string): Observable<Question> {
     //     return this.questionApiService.deleteQuestionById(questionId);
     // }

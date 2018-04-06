@@ -1,7 +1,7 @@
 <div *ngIf="answer.user" fxLayout="row" fxLayout.xs="column" class="content">
     <div fxFlex="15" fxFlex.sm="20" class="left">
-        <p>Qs:{{ answer.user.questions.length }} As:{{ answer.user.answers.length }}</p>
         <div class="left-box">
+            <p>Answered by:</p>
             <p><a routerLink="/users/{{answer.user.id}}/questions">{{answer.user.name}}</a></p>
         </div>
         <div class="vote">

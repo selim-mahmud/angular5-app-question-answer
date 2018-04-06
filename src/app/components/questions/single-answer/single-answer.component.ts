@@ -23,7 +23,7 @@ export class SingleAnswerComponent implements OnInit, OnDestroy {
         });
     }
 
-    OnDestroy() {
+    ngOnDestroy() {
         this.answerValueChange.unsubscribe();
     }
 

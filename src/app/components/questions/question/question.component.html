@@ -2,17 +2,31 @@
 
 <div *ngIf="question">
     <h3>Question:</h3>
-    <div class="single-question" *ngIf="question.user.questions">
+    <div class="single-question">
 
         <div fxLayout="row" fxLayout.xs="column" class="content">
             <div fxFlex="15" fxFlex.sm="20" class="left">
-                <p>Qs:{{ question.user.questions.length }} As:{{ question.user.answers.length }}</p>
                 <div class="left-box">
+                    <p>Asked by:</p>
                     <p><a routerLink="/users/{{question.user.id}}/questions">{{question.user.name}}</a></p>
                 </div>
-                <div class="vote">
+                <div *ngIf="!isAuthenticated" class="vote">
                     <span>{{question.upVote}} <mat-icon color="primary" class="thumb-up">thumb_up</mat-icon></span>
                     <span>{{question.downVote}} <mat-icon color="accent" class="thumb-down">thumb_down</mat-icon></span>
+                </div>
+                <div *ngIf="isAuthenticated" class="vote">
+                    <span>
+                        {{question.upVote}}
+                        <a (click)="onUpVote($event)" attr.data-vote="{{question.upVote}}" attr.data-id="{{question.id}}" href="#">
+                            <mat-icon color="primary" class="thumb-up">thumb_up</mat-icon>
+                        </a>
+                    </span>
+                    <span>
+                        {{question.downVote}}
+                        <a (click)="onDownVote($event)" attr.data-vote="{{question.upVote}}" attr.data-id="{{question.id}}" href="#">
+                            <mat-icon color="accent" class="thumb-down">thumb_down</mat-icon>
+                        </a>
+                    </span>
                 </div>
                 <p class="date">{{question.getCreatedAt()}}</p>
             </div>

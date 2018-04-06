@@ -3,8 +3,6 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../../../services/auth.service";
 import {AnswerDataService} from "../../../../services/answer/answer-data.service";
 import {Router} from "@angular/router";
-import {Subject} from "rxjs/Subject";
-import {Answer} from "../../../../models/answer";
 import {SnackBarServiceService} from "../../../../services/snack-bar-service.service";
 
 @Component({
@@ -15,8 +13,6 @@ import {SnackBarServiceService} from "../../../../services/snack-bar-service.ser
 export class CreateAnswerComponent implements OnInit {
 
     @Input() questionId: string;
-
-    answers = new Subject<Answer[]>();
 
     answerForm: FormGroup;
     loadingSpinner = false;
@@ -49,10 +45,7 @@ export class CreateAnswerComponent implements OnInit {
 
         this.answerDataService.createAnswer(inputs).subscribe(response => {
 
-            console.log(response);
-
             if(response.data.status === 'success'){
-                //this.answers.next(true);
                 this.answerForm.reset();
                 this.snackBarService.openSnackBar('Your answer has been created successfully.', '');
                 this.router.navigate(['/questions/' + this.questionId]);

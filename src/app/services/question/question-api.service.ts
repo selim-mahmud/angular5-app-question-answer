@@ -175,21 +175,26 @@ export class QuestionApiService {
 
 
     /**
-     * @param {Question} question
+     * @param {Object} inputs
+     * @param {string} id
      * @return {Observable}
      */
-    // public updateQuestion(question: Question): Observable<Question> {
-    //     return this.httpClient
-    //         .put(
-    //             this.apiUrlService.getSingleResourceUrl(RESOURCE_NAME, question.id),
-    //             question,
-    //             this.httpHeaderService.getHttpOptions()
-    //         )
-    //         .map(response => {
-    //             return new Question(response);
-    //         })
-    //         .catch(this.handleError);
-    // }
+    public updateQuestion(inputs: Object, id: string): Observable<any> {
+
+        let apiUrl: string = this.apiUrlService.baseResourceUrl(RESOURCE_NAME);
+        apiUrl = this.apiUrlService.singleResourceUrl(apiUrl, id);
+
+        return this.httpClient
+            .put(
+                apiUrl,
+                inputs,
+                this.httpHeaderService.getHttpOptions()
+            )
+            .map(response => {
+                return response;
+            })
+            .catch(this.handleError);
+    }
 
     /**
      * @param {string} questionId

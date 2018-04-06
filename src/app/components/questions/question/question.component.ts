@@ -3,9 +3,8 @@ import {QuestionDataService} from "../../../services/question/question-data.serv
 import {ActivatedRoute} from "@angular/router";
 import {Question} from "../../../models/question";
 import {UserDataService} from "../../../services/user/user-data.service";
-import {User} from "../../../models/user";
 import {AuthService} from "../../../services/auth.service";
-import {Observable} from "rxjs/Observable";
+import {SnackBarServiceService} from "../../../services/snack-bar-service.service";
 
 @Component({
     selector: 'app-question',
@@ -18,13 +17,12 @@ export class QuestionComponent implements OnInit, OnDestroy {
     loadingSpinnerQuestion: boolean = true;
     isAuthenticated: boolean = false;
     questionValueChange;
-    answerValueChange;
 
     constructor(
         private questionDataService: QuestionDataService,
         private route: ActivatedRoute,
-        private userDataService: UserDataService,
-        private authService: AuthService
+        private authService: AuthService,
+        private snackBarService: SnackBarServiceService
     ) {
     }
 
@@ -39,19 +37,40 @@ export class QuestionComponent implements OnInit, OnDestroy {
 
     getQuestion(id: string): void {
         this.questionValueChange = this.questionDataService.getQuestionById(id).subscribe(response => {
-
             this.question = response;
-
-            this.userDataService.getUserById(this.question.user.id).subscribe(response => {
-                this.question.user = new User(response);
-                this.loadingSpinnerQuestion = false;
-            });
+            this.loadingSpinnerQuestion = false;
         });
     }
 
-    OnDestroy() {
+    onUpVote(event){
+        event.preventDefault();
+
+        let inputs = {up_vote: this.question.upVote + 1};
+        this.questionDataService.updateQuestion(inputs, this.question.id).subscribe(response => {
+
+            if(response.data.status === 'success'){
+                this.question.upVote++;
+                this.snackBarService.openSnackBar('Your up vote has been cast.', '');
+            }
+        });
+
+    }
+
+    onDownVote(event){
+        event.preventDefault();
+
+        let inputs = {down_vote: this.question.downVote + 1};
+        this.questionDataService.updateQuestion(inputs, this.question.id).subscribe(response => {
+
+            if(response.data.status === 'success'){
+                this.question.downVote++;
+                this.snackBarService.openSnackBar('Your down vote has been cast.', '');
+            }
+        });
+    }
+
+    ngOnDestroy() {
         this.questionValueChange.unsubscribe();
-        this.answerValueChange.unsubscribe();
     }
 
 }
