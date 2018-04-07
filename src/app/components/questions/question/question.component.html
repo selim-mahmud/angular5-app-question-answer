@@ -47,7 +47,7 @@
     <div *ngIf="question.answers.length > 0">
         <div class="single-question">
             <div *ngFor="let answer of question.answers">
-                <app-single-answer [answer]="answer"></app-single-answer>
+                <app-single-answer [answer]="answer" [isAuthenticated]="isAuthenticated"></app-single-answer>
             </div>
         </div>
     </div>

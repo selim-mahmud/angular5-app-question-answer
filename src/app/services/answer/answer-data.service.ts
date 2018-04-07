@@ -21,4 +21,8 @@ export class AnswerDataService {
         return this.answerApiService.createAnswer(inputs);
     }
 
+    updateAnswer(inputs: Object, id: string): Observable<any> {
+        return this.answerApiService.updateAnswer(inputs, id);
+    }
+
 }

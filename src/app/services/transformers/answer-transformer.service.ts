@@ -27,6 +27,7 @@ export class AnswerTransformerService {
             'question_id': 'questionId',
             'description': 'description',
             'excepted': 'excepted',
+            'up_vote': 'upVote',
             'down_vote': 'downVote',
             'created_at': 'createdAt',
             'updated_at': 'updatedAt',

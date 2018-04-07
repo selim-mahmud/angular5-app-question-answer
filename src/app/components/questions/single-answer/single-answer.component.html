@@ -4,9 +4,23 @@
             <p>Answered by:</p>
             <p><a routerLink="/users/{{answer.user.id}}/questions">{{answer.user.name}}</a></p>
         </div>
-        <div class="vote">
+        <div *ngIf="!isAuthenticated" class="vote">
             <span>{{answer.upVote}} <mat-icon color="primary" class="thumb-up">thumb_up</mat-icon></span>
             <span>{{answer.downVote}} <mat-icon color="accent" class="thumb-down">thumb_down</mat-icon></span>
+        </div>
+        <div *ngIf="isAuthenticated" class="vote">
+            <span>
+                {{answer.upVote}}
+                <a (click)="onUpVote($event)" attr.data-vote="{{answer.upVote}}" attr.data-id="{{answer.id}}" href="">
+                    <mat-icon color="primary" class="thumb-up">thumb_up</mat-icon>
+                </a>
+            </span>
+            <span>
+                {{answer.downVote}}
+                <a (click)="onDownVote($event)" attr.data-vote="{{answer.downVote}}" attr.data-id="{{answer.id}}" href="">
+                    <mat-icon color="accent" class="thumb-down">thumb_down</mat-icon>
+                </a>
+            </span>
         </div>
         <p class="date">{{answer.getCreatedAt()}}</p>
     </div>

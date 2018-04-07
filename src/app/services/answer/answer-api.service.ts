@@ -112,4 +112,26 @@ export class AnswerApiService {
         return Observable.throw(error);
     }
 
+    /**
+     * @param {Object} inputs
+     * @param {string} id
+     * @return {Observable}
+     */
+    public updateAnswer(inputs: Object, id: string): Observable<any> {
+
+        let apiUrl: string = this.apiUrlService.baseResourceUrl(RESOURCE_NAME);
+        apiUrl = this.apiUrlService.singleResourceUrl(apiUrl, id);
+
+        return this.httpClient
+            .put(
+                apiUrl,
+                inputs,
+                this.httpHeaderService.getHttpOptions()
+            )
+            .map(response => {
+                return response;
+            })
+            .catch(this.handleError);
+    }
+
 }

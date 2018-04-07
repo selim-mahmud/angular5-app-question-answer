@@ -2,8 +2,8 @@ import moment = require("moment");
 
 export class Answer {
     id: string;
-    userId: string = 0;
-    questionId: string = 0;
+    userId: string = '';
+    questionId: string = '';
     description: string = '';
     excepted: boolean = false;
     upVote: number = 0;

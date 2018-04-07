@@ -172,8 +172,6 @@ export class QuestionApiService {
             .catch(this.handleError);
     }
 
-
-
     /**
      * @param {Object} inputs
      * @param {string} id
@@ -195,20 +193,6 @@ export class QuestionApiService {
             })
             .catch(this.handleError);
     }
-
-    /**
-     * @param {string} questionId
-     * @return {Observable}
-     */
-    // public deleteQuestionById(questionId: string): Observable<null> {
-    //     return this.httpClient
-    //         .delete(
-    //             this.apiUrlService.getSingleResourceUrl(RESOURCE_NAME, questionId),
-    //             this.httpHeaderService.getHttpOptions()
-    //         )
-    //         .map(response => null)
-    //         .catch(this.handleError);
-    // }
 
     private handleError(error: Response | any) {
         return Observable.throw(error);

@@ -40,16 +40,4 @@ export class QuestionDataService {
     updateQuestion(inputs: Object, id: string): Observable<any> {
         return this.questionApiService.updateQuestion(inputs, id);
     }
-
-    // deleteQuestionById(questionId: string): Observable<Question> {
-    //     return this.questionApiService.deleteQuestionById(questionId);
-    // }
-
-
-    // toggleTodoComplete(todo: Question) {
-    //     let updatedTodo = this.updateTodoById(todo.id, {
-    //         complete: !todo.complete
-    //     });
-    //     return updatedTodo;
-    // }
 }

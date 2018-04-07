@@ -2,7 +2,6 @@ import {Component, OnInit, OnDestroy} from '@angular/core';
 import {QuestionDataService} from "../../../services/question/question-data.service";
 import {ActivatedRoute} from "@angular/router";
 import {Question} from "../../../models/question";
-import {UserDataService} from "../../../services/user/user-data.service";
 import {AuthService} from "../../../services/auth.service";
 import {SnackBarServiceService} from "../../../services/snack-bar-service.service";
 
